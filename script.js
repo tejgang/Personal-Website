@@ -34,7 +34,8 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 // Remove the typing cursor after completion
                 setTimeout(() => {
-                    nameElement.style.borderRight = 'none';
+                    nameElement.style.setProperty('--hide-cursor', 'true');
+                    nameElement.classList.add('hide-cursor');
                 }, 1000);
             }
         }
