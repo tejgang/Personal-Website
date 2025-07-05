@@ -81,7 +81,29 @@ nav {
     color: #333;
     position: relative;
     padding-top: 120px;
-    background: #f8f9fa;
+    background: url('vc_spotlight_santabarbara_hero_st_rm_529573764_1280x640.jpg.png') center/cover no-repeat;
+    animation: fadeInBackground 2s ease-in-out;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('vc_spotlight_santabarbara_hero_st_rm_529573764_1280x640.jpg.png') center/cover no-repeat;
+    filter: blur(10px);
+    z-index: 1;
+}
+
+@keyframes fadeInBackground {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 
@@ -163,6 +185,12 @@ nav {
     align-items: start;
     max-width: 1200px;
     margin: 0 auto;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
 }
 
 .left-column {
@@ -201,7 +229,7 @@ nav {
 .about-header h2 {
     font-size: 1.2rem;
     font-weight: 600;
-    color: #888;
+    color: #ffffff;
     margin-bottom: 2rem;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -210,21 +238,21 @@ nav {
 .about-description h1 {
     font-size: 3rem;
     font-weight: 700;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 0.5rem;
     line-height: 1.2;
 }
 
 .about-description .subtitle {
     font-size: 1.3rem;
-    color: #667eea;
+    color: #a8c7ff;
     font-weight: 500;
     margin-bottom: 2rem;
 }
 
 .about-description p {
     margin-bottom: 1.5rem;
-    color: #666;
+    color: #ffffff;
     line-height: 1.8;
     font-size: 1.1rem;
 }
