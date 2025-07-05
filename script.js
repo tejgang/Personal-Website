@@ -72,8 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
         headerObserver.observe(header);
     });
 
-    // Smooth page transitions for navigation links
-    const pageTransition = document.querySelector('.page-transition');
+    // Simple smooth scrolling for navigation links
     const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
 
     navLinks.forEach(link => {
@@ -83,21 +82,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const targetSection = document.querySelector(targetId);
 
             if (targetSection) {
-                // Trigger page transition
-                pageTransition.classList.add('active');
-                
-                setTimeout(() => {
-                    // Scroll to target section
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    
-                    // Remove transition after scroll
-                    setTimeout(() => {
-                        pageTransition.classList.remove('active');
-                    }, 300);
-                }, 300);
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             }
         });
     });
