@@ -33,15 +33,74 @@ document.addEventListener('DOMContentLoaded', function() {
         timelineObserver.observe(timeline);
     }
 
-    // Parallax background effect
+    // Optimized parallax background effect with throttling
     const parallaxBg = document.querySelector('.parallax-bg');
     if (parallaxBg) {
-        window.addEventListener('scroll', () => {
+        let ticking = false;
+        
+        function updateParallax() {
             const scrolled = window.pageYOffset;
-            const parallaxSpeed = 0.5;
+            const parallaxSpeed = 0.3; // Reduced speed
             parallaxBg.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+            ticking = false;
+        }
+        
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
         });
     }
+
+    // Section header animations
+    const headerObserverOptions = {
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const headerObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, headerObserverOptions);
+
+    const sectionHeaders = document.querySelectorAll('.section-header');
+    sectionHeaders.forEach(header => {
+        headerObserver.observe(header);
+    });
+
+    // Smooth page transitions for navigation links
+    const pageTransition = document.querySelector('.page-transition');
+    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+
+            if (targetSection) {
+                // Trigger page transition
+                pageTransition.classList.add('active');
+                
+                setTimeout(() => {
+                    // Scroll to target section
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Remove transition after scroll
+                    setTimeout(() => {
+                        pageTransition.classList.remove('active');
+                    }, 300);
+                }, 300);
+            }
+        });
+    });
 
     // Typewriter effect for name
     const nameElement = document.getElementById('typewriter-name');
