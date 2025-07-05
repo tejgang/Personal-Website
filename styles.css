@@ -135,7 +135,7 @@ nav {
     position: relative;
     padding-top: 80px;
     padding-bottom: 20px;
-    background: url('vc_spotlight_santabarbara_hero_st_rm_529573764_1280x640.jpg.png') center/cover no-repeat;
+    background: url('images/vc_spotlight_santabarbara_hero_st_rm_529573764_1280x640.jpg.png') center/cover no-repeat;
     animation: fadeInBackground 2s ease-in-out;
 }
 
@@ -146,7 +146,7 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('vc_spotlight_santabarbara_hero_st_rm_529573764_1280x640.jpg.png') center/cover no-repeat;
+    background: url('images/vc_spotlight_santabarbara_hero_st_rm_529573764_1280x640.jpg.png') center/cover no-repeat;
     filter: blur(10px);
     z-index: 1;
 }
@@ -421,7 +421,7 @@ nav {
 #experience {
     position: relative;
     overflow: hidden;
-    background: url('ChatGPT Image Jul 5, 2025, 04_48_48 PM.png') center/cover no-repeat;
+    background: url('images/ChatGPT Image Jul 5, 2025, 04_48_48 PM.png') center/cover no-repeat;
 }
 
 #experience::before {
@@ -551,7 +551,7 @@ nav {
 #projects {
     position: relative;
     overflow: hidden;
-    background: url('ChatGPT Image Jul 5, 2025, 04_48_48 PM.png') center/cover no-repeat;
+    background: url('images/ChatGPT Image Jul 5, 2025, 04_48_48 PM.png') center/cover no-repeat;
 }
 
 #projects::before {
@@ -654,7 +654,7 @@ nav {
 #skills {
     position: relative;
     overflow: hidden;
-    background: url('ChatGPT Image Jul 5, 2025, 04_48_48 PM.png') center/cover no-repeat;
+    background: url('images/ChatGPT Image Jul 5, 2025, 04_48_48 PM.png') center/cover no-repeat;
 }
 
 #skills::before {
@@ -732,7 +732,7 @@ nav {
 #contact {
     position: relative;
     overflow: hidden;
-    background: url('ChatGPT Image Jul 5, 2025, 04_48_48 PM.png') center/cover no-repeat;
+    background: url('images/ChatGPT Image Jul 5, 2025, 04_48_48 PM.png') center/cover no-repeat;
 }
 
 #contact::before {
