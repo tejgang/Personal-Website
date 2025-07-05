@@ -335,9 +335,27 @@ nav {
 }
 
 /* Experience Section */
+#experience {
+    position: relative;
+    overflow: hidden;
+}
+
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.1;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><style>.grid{stroke:%23667eea;stroke-width:1;fill:none;opacity:0.3}</style></defs><g class="grid"><circle cx="100" cy="100" r="3" fill="%23667eea"/><circle cx="300" cy="200" r="2" fill="%23764ba2"/><circle cx="700" cy="150" r="4" fill="%23667eea"/><circle cx="500" cy="400" r="3" fill="%23764ba2"/><circle cx="800" cy="600" r="2" fill="%23667eea"/><circle cx="200" cy="700" r="3" fill="%23764ba2"/><path d="M100 100L300 200L500 400" stroke="%23667eea" stroke-width="1" opacity="0.4"/><path d="M300 200L700 150L800 600" stroke="%23764ba2" stroke-width="1" opacity="0.4"/><path d="M500 400L200 700L800 600" stroke="%23667eea" stroke-width="1" opacity="0.3"/></g></svg>') repeat;
+    background-size: 400px 400px;
+    z-index: 1;
+}
+
 .experience-timeline {
     position: relative;
     padding-left: 2rem;
+    z-index: 2;
 }
 
 .experience-timeline::before {
@@ -348,6 +366,13 @@ nav {
     bottom: 0;
     width: 4px;
     background: linear-gradient(to bottom, #667eea, #764ba2);
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: transform 0.8s ease-out;
+}
+
+.experience-timeline.animate-timeline::before {
+    transform: scaleY(1);
 }
 
 .experience-item {
@@ -358,11 +383,21 @@ nav {
     border-radius: 10px;
     padding: 2rem;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
 }
 
 .experience-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px) rotateX(2deg) rotateY(-1deg);
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.3),
+        0 0 30px rgba(102, 126, 234, 0.2),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+    background: linear-gradient(135deg, #1e1e1e 0%, #252525 100%);
+}
+
+.experience-item:hover::before {
+    box-shadow: 0 0 15px rgba(102, 126, 234, 0.6);
 }
 
 .experience-item::before {

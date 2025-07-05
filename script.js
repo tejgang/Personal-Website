@@ -19,6 +19,30 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(item);
     });
 
+    // Timeline animation
+    const timeline = document.querySelector('.experience-timeline');
+    const timelineObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-timeline');
+            }
+        });
+    }, { threshold: 0.3 });
+
+    if (timeline) {
+        timelineObserver.observe(timeline);
+    }
+
+    // Parallax background effect
+    const parallaxBg = document.querySelector('.parallax-bg');
+    if (parallaxBg) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxSpeed = 0.5;
+            parallaxBg.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+        });
+    }
+
     // Typewriter effect for name
     const nameElement = document.getElementById('typewriter-name');
     const originalText = nameElement.textContent;
