@@ -18,4 +18,26 @@ document.addEventListener('DOMContentLoaded', function() {
     experienceItems.forEach(item => {
         observer.observe(item);
     });
+
+    // Typewriter effect for name
+    const nameElement = document.getElementById('typewriter-name');
+    const originalText = nameElement.textContent;
+    nameElement.textContent = '';
+    
+    setTimeout(() => {
+        let i = 0;
+        function typeWriter() {
+            if (i < originalText.length) {
+                nameElement.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            } else {
+                // Remove the typing cursor after completion
+                setTimeout(() => {
+                    nameElement.style.borderRight = 'none';
+                }, 1000);
+            }
+        }
+        typeWriter();
+    }, 500); // Start typing after 500ms
 });
