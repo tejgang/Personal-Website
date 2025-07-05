@@ -31,8 +31,9 @@ body {
 
 /* Header Styles */
 header {
-    background: #ffffff;
-    border-bottom: 1px solid #e9ecef;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     position: fixed;
     width: 100%;
     top: 0;
@@ -220,7 +221,7 @@ nav {
     font-size: 1rem;
     line-height: 1.6;
     color: #555;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 2rem;
@@ -247,7 +248,7 @@ nav {
 
 .about-description .subtitle {
     font-size: 1.3rem;
-    color: #a8c7ff;
+    color: #764ba2;
     font-weight: 500;
     margin-bottom: 2rem;
 }
