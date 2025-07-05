@@ -194,7 +194,7 @@ nav {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    padding-top: 60px;
+    padding-top: 100px;
 }
 
 .bottom-section {
@@ -202,8 +202,8 @@ nav {
 }
 
 .about-image {
-    width: 300px;
-    height: 350px;
+    width: 400px;
+    height: 550px;
     border-radius: 20px;
     overflow: hidden;
     margin: 0;
