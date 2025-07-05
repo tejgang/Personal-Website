@@ -204,11 +204,6 @@ nav {
 /* Section Styles */
 .section {
     padding: 6rem 0;
-    background: #0f0f0f;
-}
-
-.section:nth-child(even) {
-    background: #1a1a1a;
 }
 
 /* Section Header Animations */
@@ -426,6 +421,18 @@ nav {
 #experience {
     position: relative;
     overflow: hidden;
+    background: url('ChatGPT Image Jul 5, 2025, 04_48_48 PM.png') center/cover no-repeat;
+}
+
+#experience::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 15, 15, 0.8);
+    z-index: 1;
 }
 
 .parallax-bg {
@@ -446,6 +453,11 @@ nav {
 .experience-timeline {
     position: relative;
     padding-left: 2rem;
+    z-index: 2;
+}
+
+.container {
+    position: relative;
     z-index: 2;
 }
 
@@ -536,11 +548,30 @@ nav {
 }
 
 /* Projects Section */
+#projects {
+    position: relative;
+    overflow: hidden;
+    background: url('ChatGPT Image Jul 5, 2025, 04_48_48 PM.png') center/cover no-repeat;
+}
+
+#projects::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 15, 15, 0.8);
+    z-index: 1;
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
+    position: relative;
+    z-index: 2;
 }
 
 .project-card {
@@ -620,6 +651,23 @@ nav {
 }
 
 /* Skills Section */
+#skills {
+    position: relative;
+    overflow: hidden;
+    background: url('ChatGPT Image Jul 5, 2025, 04_48_48 PM.png') center/cover no-repeat;
+}
+
+#skills::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 15, 15, 0.8);
+    z-index: 1;
+}
+
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -628,6 +676,8 @@ nav {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
+    z-index: 2;
 }
 
 .skill-category {
@@ -679,11 +729,30 @@ nav {
 }
 
 /* Contact Section */
+#contact {
+    position: relative;
+    overflow: hidden;
+    background: url('ChatGPT Image Jul 5, 2025, 04_48_48 PM.png') center/cover no-repeat;
+}
+
+#contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 15, 15, 0.8);
+    z-index: 1;
+}
+
 .contact-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: start;
+    position: relative;
+    z-index: 2;
 }
 
 .contact-info {
