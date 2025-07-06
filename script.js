@@ -91,24 +91,28 @@ document.addEventListener('DOMContentLoaded', function() {
         projectCardObserver.observe(card);
     });
 
-    // Skill card animations
-    const skillCardObserverOptions = {
+    // Skill card animations - trigger all cards when skills section is viewed
+    const skillSectionObserverOptions = {
         threshold: 0.2,
         rootMargin: '0px 0px -50px 0px'
     };
 
-    const skillCardObserver = new IntersectionObserver(function(entries) {
+    const skillSectionObserver = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
+                // Animate all skill cards simultaneously
+                const skillCards = document.querySelectorAll('.skill-category');
+                skillCards.forEach(card => {
+                    card.classList.add('animate-in');
+                });
             }
         });
-    }, skillCardObserverOptions);
+    }, skillSectionObserverOptions);
 
-    const skillCards = document.querySelectorAll('.animate-skill-card');
-    skillCards.forEach(card => {
-        skillCardObserver.observe(card);
-    });
+    const skillsSection = document.querySelector('#skills');
+    if (skillsSection) {
+        skillSectionObserver.observe(skillsSection);
+    }
 
     // Contact section animations
     const contactObserverOptions = {
