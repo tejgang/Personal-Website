@@ -952,50 +952,6 @@ nav {
     box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
 }
 
-.submit-btn {
-    position: relative;
-    overflow: hidden;
-}
-
-.submit-btn .plane-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 1.2rem;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.submit-btn.sending {
-    pointer-events: none;
-}
-
-.submit-btn.sending .plane-icon {
-    opacity: 1;
-    animation: fly-away 1.5s ease-out forwards;
-}
-
-.submit-btn.sending .btn-text {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-@keyframes fly-away {
-    0% {
-        transform: translate(-50%, -50%) rotate(0deg);
-        opacity: 1;
-    }
-    50% {
-        transform: translate(-50%, -50%) rotate(15deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(200px, -200px) rotate(25deg);
-        opacity: 0;
-    }
-}
-
 /* Footer */
 footer {
     background: #2c3e50;
