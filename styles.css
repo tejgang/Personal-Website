@@ -206,6 +206,10 @@ nav {
     padding: 6rem 0;
 }
 
+#projects {
+    padding-top: 4rem;
+}
+
 /* Section Header Animations */
 .section-header {
     text-align: center;
@@ -431,7 +435,7 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(15, 15, 15, 0.8);
+    background: rgba(15, 15, 15, 0.6);
     z-index: 1;
 }
 
@@ -561,7 +565,7 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(15, 15, 15, 0.8);
+    background: rgba(15, 15, 15, 0.6);
     z-index: 1;
 }
 
@@ -712,7 +716,7 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(15, 15, 15, 0.8);
+    background: rgba(15, 15, 15, 0.6);
     z-index: 1;
 }
 
@@ -790,7 +794,7 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(15, 15, 15, 0.8);
+    background: rgba(15, 15, 15, 0.6);
     z-index: 1;
 }
 
