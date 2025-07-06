@@ -72,6 +72,25 @@ document.addEventListener('DOMContentLoaded', function() {
         headerObserver.observe(header);
     });
 
+    // Project card animations
+    const projectCardObserverOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const projectCardObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, projectCardObserverOptions);
+
+    const projectCards = document.querySelectorAll('.animate-project-card');
+    projectCards.forEach(card => {
+        projectCardObserver.observe(card);
+    });
+
     // Simple smooth scrolling for navigation links
     const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
 
