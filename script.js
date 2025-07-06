@@ -131,4 +131,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         typeWriter();
     }, 500); // Start typing after 500ms
+
+    // Email button click functionality
+    const emailButton = document.querySelector('.email-clickable');
+    const nameInput = document.querySelector('#name');
+    
+    if (emailButton && nameInput) {
+        emailButton.addEventListener('click', function() {
+            // Scroll to the form section smoothly
+            const contactForm = document.querySelector('.contact-form');
+            if (contactForm) {
+                contactForm.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+                
+                // Focus on the name input after a short delay
+                setTimeout(() => {
+                    nameInput.focus();
+                }, 100);
+            }
+        });
+        
+        // Add cursor pointer style
+        emailButton.style.cursor = 'pointer';
+    }
 });
