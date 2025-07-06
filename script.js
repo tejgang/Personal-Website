@@ -195,27 +195,41 @@ document.addEventListener('DOMContentLoaded', function() {
                 to_email: 'tejgangupantula@gmail.com'
             };
             
-            // Disable submit button and show loading state
+            // Disable submit button and show animated loading state
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
+            
+            // Animate the sending text with progressive dots
+            let dotCount = 0;
+            const animateSending = () => {
+                dotCount = (dotCount + 1) % 4;
+                const dots = '.'.repeat(dotCount);
+                submitBtn.textContent = `Sending${dots}`;
+            };
+            
+            // Start the animation
+            animateSending();
+            const sendingInterval = setInterval(animateSending, 500);
             
             // Send email using EmailJS
             emailjs.send('service_ckxe5g7', 'template_atvc8n3', templateParams)
                 .then(function(response) {
-                    // Success - trigger confetti and show success message
+                    // Success - clear interval and show success message
+                    clearInterval(sendingInterval);
+                    submitBtn.textContent = 'Sent! 🚀';
                     setTimeout(() => {
-                        alert('Message sent successfully! Thank you for reaching out! 🎉');
                         contactForm.reset(); // Clear the form
-                    }, 500);
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Send Message';
+                    }, 2000);
                 }, function(error) {
                     // Error handling
-                    alert('Failed to send message. Please try again or contact me directly at tejgangupantula@gmail.com');
+                    clearInterval(sendingInterval);
+                    submitBtn.textContent = 'Error - Try Again';
                     console.error('EmailJS error:', error);
-                })
-                .finally(function() {
-                    // Reset button state
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = 'Send Message';
+                    setTimeout(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Send Message';
+                    }, 2000);
                 });
         });
     }
