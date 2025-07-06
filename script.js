@@ -131,4 +131,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         typeWriter();
     }, 500); // Start typing after 500ms
+
+    // Paper plane animation for submit button
+    const contactForm = document.querySelector('.contact-form');
+    const submitBtn = document.querySelector('.submit-btn');
+    
+    if (contactForm && submitBtn) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent actual form submission for demo
+            
+            // Add sending class to trigger animation
+            submitBtn.classList.add('sending');
+            
+            // Reset the animation after completion
+            setTimeout(() => {
+                submitBtn.classList.remove('sending');
+                // You can add actual form submission logic here
+                alert('Message sent! (This is a demo)');
+            }, 1500);
+        });
+    }
 });
