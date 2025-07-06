@@ -91,6 +91,44 @@ document.addEventListener('DOMContentLoaded', function() {
         projectCardObserver.observe(card);
     });
 
+    // Skill card animations
+    const skillCardObserverOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const skillCardObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, skillCardObserverOptions);
+
+    const skillCards = document.querySelectorAll('.animate-skill-card');
+    skillCards.forEach(card => {
+        skillCardObserver.observe(card);
+    });
+
+    // Contact section animations
+    const contactObserverOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const contactObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, contactObserverOptions);
+
+    const contactItems = document.querySelectorAll('.animate-contact-item');
+    contactItems.forEach(item => {
+        contactObserver.observe(item);
+    });
+
     // Simple smooth scrolling for navigation links
     const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
 
