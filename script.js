@@ -132,6 +132,52 @@ document.addEventListener('DOMContentLoaded', function() {
         typeWriter();
     }, 500); // Start typing after 500ms
 
+    // Initialize EmailJS
+    emailjs.init('vgRr7rMZBv_4OI6KH'); // Replace with your actual public key
+
+    // Contact form submission with EmailJS
+    const contactForm = document.querySelector('.contact-form');
+    const submitBtn = document.querySelector('.submit-btn');
+    
+    if (contactForm && submitBtn) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const templateParams = {
+                from_name: formData.get('name'),
+                from_email: formData.get('email'),
+                subject: formData.get('subject'),
+                message: formData.get('message'),
+                to_email: 'tejgangupantula@gmail.com'
+            };
+            
+            // Disable submit button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            
+            // Send email using EmailJS
+            emailjs.send('service_ckxe5g7', 'template_atvc8n3', templateParams)
+                .then(function(response) {
+                    // Success - trigger confetti and show success message
+                    setTimeout(() => {
+                        alert('Message sent successfully! Thank you for reaching out! 🎉');
+                        contactForm.reset(); // Clear the form
+                    }, 500);
+                }, function(error) {
+                    // Error handling
+                    alert('Failed to send message. Please try again or contact me directly at tejgangupantula@gmail.com');
+                    console.error('EmailJS error:', error);
+                })
+                .finally(function() {
+                    // Reset button state
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Message';
+                });
+        });
+    }
+
     // Email button click functionality
     const emailButton = document.querySelector('.email-clickable');
     const nameInput = document.querySelector('#name');
