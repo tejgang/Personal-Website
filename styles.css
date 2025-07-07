@@ -91,6 +91,25 @@ header {
     top: 0;
     z-index: 1000;
     transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(-100%);
+    animation: popDown 0.8s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes popDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    70% {
+        opacity: 1;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 nav {
@@ -288,6 +307,14 @@ nav {
     overflow: hidden;
     margin: 0;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.about-image.bounce-in {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .about-image img {
@@ -306,6 +333,14 @@ nav {
     padding: 2rem;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1.2s ease-out;
+}
+
+.about-text.fade-in {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .about-header h2 {

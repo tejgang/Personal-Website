@@ -151,11 +151,29 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // About section animations on page load
+    const aboutText = document.querySelector('.about-text');
+    const aboutImage = document.querySelector('.about-image');
+    
+    // Trigger animations with staggered timing
+    setTimeout(() => {
+        if (aboutImage) {
+            aboutImage.classList.add('bounce-in');
+        }
+    }, 300); // Image bounces in first
+    
+    setTimeout(() => {
+        if (aboutText) {
+            aboutText.classList.add('fade-in');
+        }
+    }, 800); // Text fades in after image
+
     // Typewriter effect for name
     const nameElement = document.getElementById('typewriter-name');
     const originalText = nameElement.textContent;
     nameElement.textContent = '';
     
+    // Start typewriter after about text fully fades in (800ms delay + 1200ms transition)
     setTimeout(() => {
         let i = 0;
         function typeWriter() {
@@ -172,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         typeWriter();
-    }, 500); // Start typing after 500ms
+    }, 2000); // Start typing after about text fully fades in (800ms + 1200ms transition)
 
     // Initialize EmailJS
     emailjs.init('vgRr7rMZBv_4OI6KH'); // Replace with your actual public key
