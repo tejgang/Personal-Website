@@ -177,7 +177,46 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize EmailJS
     emailjs.init('vgRr7rMZBv_4OI6KH'); // Replace with your actual public key
 
-    // Contact form submission with EmailJS
+    // === Dynamic Timeline Dot Color ===
+    function hexToRgb(hex){
+        const bigint = parseInt(hex.replace('#',''),16);
+        const r = (bigint>>16)&255;
+        const g = (bigint>>8)&255;
+        const b = bigint&255;
+        return {r,g,b};
+    }
+    function rgbToHex(r,g,b){
+        const toHex = x => x.toString(16).padStart(2,'0');
+        return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+    }
+    function lerp(a,b,t){return a+(b-a)*t;}
+
+    const startColor = '#667eea';
+    const endColor = '#764ba2';
+    const timelineLine = document.querySelector('.experience-timeline');
+    function updateDotColors(){
+        if(!timelineLine) return;
+        const rect = timelineLine.getBoundingClientRect();
+        const items = document.querySelectorAll('.experience-item');
+        items.forEach(item=>{
+            const itemRect = item.getBoundingClientRect();
+            const itemCenter = itemRect.top + itemRect.height/2;
+            const ratio = (itemCenter - rect.top)/(rect.height);
+            const t = Math.min(Math.max(ratio,0),1);
+            const c1 = hexToRgb(startColor);
+            const c2 = hexToRgb(endColor);
+            const r = Math.round(lerp(c1.r,c2.r,t));
+            const g = Math.round(lerp(c1.g,c2.g,t));
+            const b = Math.round(lerp(c1.b,c2.b,t));
+            const col = rgbToHex(r,g,b);
+            item.style.setProperty('--dot-color', col);
+        });
+    }
+    updateDotColors();
+    window.addEventListener('scroll', updateDotColors);
+    window.addEventListener('resize', updateDotColors);
+
+// Contact form submission with EmailJS
     const contactForm = document.querySelector('.contact-form');
     const submitBtn = document.querySelector('.submit-btn');
     

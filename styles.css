@@ -504,13 +504,14 @@ nav {
 .experience-item::before {
     content: '';
     position: absolute;
-    left: -2rem;
-    top: 2rem;
+    left: calc(-2rem - 6px);
+    top: 50%;
+    transform: translateY(-50%);
     width: 16px;
     height: 16px;
-    background: #667eea;
+    background: linear-gradient(45deg, #667eea, #764ba2);
     border-radius: 50%;
-    border: 4px solid white;
+    border: none;
 }
 
 .experience-title {
@@ -559,6 +560,11 @@ nav {
 }
 
 /* New Experience Layout */
+
+/* Dot color will be set via CSS variable --dot-color per item */
+.experience-item::before{
+    background: var(--dot-color, #667eea) !important;
+}
 .experience-wrapper{
     display:flex;
     flex-wrap:wrap;
