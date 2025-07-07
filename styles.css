@@ -505,8 +505,9 @@ nav {
     content: '';
     position: absolute;
     left: calc(-2rem - 6px);
-    top: 50%;
+    top: 45%;
     transform: translateY(-50%);
+    transform: translateX(-5%);
     width: 16px;
     height: 16px;
     background: linear-gradient(45deg, #667eea, #764ba2);
