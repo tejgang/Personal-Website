@@ -682,7 +682,14 @@ nav {
         display:none !important;
     }
 
-    /* contact cards full width */
+    /* eliminate default highlight on phone links */
+a[href^="tel"], a[href^="tel"]:visited{
+    color: inherit;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* contact cards full width */
     .contact-item{
         flex: 1 1 100%;
         max-width: 100%;
