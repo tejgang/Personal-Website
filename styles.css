@@ -643,6 +643,24 @@ nav {
 
 /* Mobile Overrides */
 @media (max-width: 600px){
+    /* spacing before Experience section to avoid overlap */
+    #experience{
+        padding-top: 3rem;
+    }
+    .experience-wrapper{margin-top:0;}
+
+    /* smaller section headers and allow wrapping */
+    .section-header{
+        font-size: 1.8rem;
+        line-height: 1.2;
+        word-break: break-word;
+    }
+    /* prevent typewriter name overflow */
+    #typewriter-name{
+        font-size: clamp(1.8rem, 7vw, 2.4rem);
+        white-space: nowrap;
+        overflow: visible;
+    }
     body{overflow-x:hidden;}
 
     /* hide large images */
