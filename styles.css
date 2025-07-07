@@ -654,12 +654,11 @@ nav {
     }
     #about{
         padding-top: 20rem;
-        padding-bottom:2rem;
     }
 
     /* spacing before Experience section to avoid overlap */
     #experience{
-        padding-top: 25rem;
+        padding-top: 35rem;
     }
     .experience-wrapper{margin-top:0;}
 
