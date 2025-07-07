@@ -485,27 +485,16 @@ nav {
     padding: 1.5rem;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
     will-change: transform;
     transform: translateZ(0);
 }
 
-.experience-item:hover {
-    transform: translateY(-5px) translateZ(0);
-    box-shadow: 
-        0 15px 30px rgba(0,0,0,0.2),
-        0 0 20px rgba(102, 126, 234, 0.3);
-}
-
-.experience-item:hover::before {
-    box-shadow: 0 0 10px rgba(102, 126, 234, 0.4);
-}
 
 .experience-item::before {
     content: '';
     position: absolute;
     left: calc(-2rem - 6px);
-    top: 45%;
+    top: 42%;
     transform: translateY(-50%);
     transform: translateX(-5%);
     width: 16px;
@@ -541,6 +530,12 @@ nav {
 }
 
 .experience-date {
+    color: #888;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.experience-location {
     color: #888;
     font-size: 0.9rem;
     margin-bottom: 1rem;
@@ -601,6 +596,14 @@ nav {
     .experience-timeline, .experience-image{
         max-width:100%;
     }
+}
+
+/* Tighter spacing for experience cards */
+.experience-location{
+    margin-bottom: 0.25rem;
+}
+.experience-item{
+    padding-bottom: 1rem;
 }
 
 /* Projects Section */
