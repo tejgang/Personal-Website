@@ -324,6 +324,8 @@ nav {
 }
 
 .about-text {
+    margin-top: 0;
+
     font-size: 1rem;
     line-height: 1.6;
     color: #e0e0e0;
@@ -643,6 +645,8 @@ nav {
 
 /* Mobile Overrides */
 @media (max-width: 600px){
+    .about-text{padding-top:1rem;padding-bottom:1.5rem;}
+
     /* hide about header and name for concise intro */
     .about-header,
     #typewriter-name,
@@ -653,7 +657,7 @@ nav {
 
     /* spacing before Experience section to avoid overlap */
     #experience{
-        padding-top: 3rem;
+        padding-top: 8rem;
     }
     .experience-wrapper{margin-top:0;}
 
