@@ -652,7 +652,10 @@ nav {
     .subtitle{
         display:none !important;
     }
-    #about{padding-bottom:2rem;}
+    #about{
+        padding-top: 10rem;
+        padding-bottom:2rem;
+    }
 
     /* spacing before Experience section to avoid overlap */
     #experience{
