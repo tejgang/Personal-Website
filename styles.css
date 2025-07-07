@@ -641,6 +641,28 @@ nav {
     padding-bottom: 1rem;
 }
 
+/* Mobile Overrides */
+@media (max-width: 600px){
+    body{overflow-x:hidden;}
+
+    /* hide large images */
+    .experience-image,
+    .about-image{
+        display:none !important;
+    }
+
+    /* contact cards full width */
+    .contact-item{
+        flex: 1 1 100%;
+        max-width: 100%;
+        margin: 0 0 1rem 0;
+    }
+    .contact-content{
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
 /* Projects Section */
 #projects {
     position: relative;
