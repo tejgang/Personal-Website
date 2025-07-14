@@ -291,12 +291,52 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Email button click functionality
+    // Email protection and reveal functionality
+    const emailDisplay = document.getElementById('email-display');
     const emailButton = document.querySelector('.email-clickable');
     const nameInput = document.querySelector('#name');
     
+    // Obfuscated email parts (split to avoid detection)
+    const emailParts = ['tejgang', 'upantula', '@', 'gmail', '.', 'com'];
+    let emailRevealed = false;
+    
+    if (emailDisplay) {
+        emailDisplay.addEventListener('click', function() {
+            if (!emailRevealed) {
+                // Reveal the email address
+                const fullEmail = emailParts.join('');
+                emailDisplay.textContent = fullEmail;
+                emailDisplay.style.color = '#667eea';
+                emailDisplay.style.cursor = 'default';
+                emailRevealed = true;
+                
+                // Make it copyable
+                emailDisplay.addEventListener('click', function() {
+                    navigator.clipboard.writeText(fullEmail).then(() => {
+                        const originalText = emailDisplay.textContent;
+                        emailDisplay.textContent = 'Copied!';
+                        setTimeout(() => {
+                            emailDisplay.textContent = originalText;
+                        }, 1000);
+                    });
+                });
+            }
+        });
+        
+        // Add cursor pointer style for initial click
+        emailDisplay.style.cursor = 'pointer';
+        emailDisplay.style.color = '#999';
+        emailDisplay.style.textDecoration = 'underline';
+    }
+    
     if (emailButton && nameInput) {
         emailButton.addEventListener('click', function() {
+            // If email not revealed, reveal it first
+            if (!emailRevealed && emailDisplay) {
+                emailDisplay.click();
+                return;
+            }
+            
             // Scroll to the form section smoothly
             const contactForm = document.querySelector('.contact-form');
             if (contactForm) {
