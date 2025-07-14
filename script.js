@@ -291,52 +291,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Email protection and reveal functionality
+    // Email protection - display normally but obfuscated from scrapers
     const emailDisplay = document.getElementById('email-display');
     const emailButton = document.querySelector('.email-clickable');
     const nameInput = document.querySelector('#name');
     
-    // Obfuscated email parts (split to avoid detection)
-    const emailParts = ['tejgang', 'upantula', '@', 'gmail', '.', 'com'];
-    let emailRevealed = false;
-    
     if (emailDisplay) {
-        emailDisplay.addEventListener('click', function() {
-            if (!emailRevealed) {
-                // Reveal the email address
-                const fullEmail = emailParts.join('');
-                emailDisplay.textContent = fullEmail;
-                emailDisplay.style.color = '#667eea';
-                emailDisplay.style.cursor = 'default';
-                emailRevealed = true;
-                
-                // Make it copyable
-                emailDisplay.addEventListener('click', function() {
-                    navigator.clipboard.writeText(fullEmail).then(() => {
-                        const originalText = emailDisplay.textContent;
-                        emailDisplay.textContent = 'Copied!';
-                        setTimeout(() => {
-                            emailDisplay.textContent = originalText;
-                        }, 1000);
-                    });
-                });
-            }
-        });
+        // Obfuscated email construction (harder for bots to parse)
+        const user = String.fromCharCode(116,101,106,103,97,110,103,117,112,97,110,116,117,108,97);
+        const domain = String.fromCharCode(103,109,97,105,108);
+        const tld = String.fromCharCode(99,111,109);
+        const at = String.fromCharCode(64);
+        const dot = String.fromCharCode(46);
         
-        // Add cursor pointer style for initial click
-        emailDisplay.style.cursor = 'pointer';
-        emailDisplay.style.color = '#999';
-        emailDisplay.style.textDecoration = 'underline';
+        // Display the email immediately on load
+        emailDisplay.textContent = user + at + domain + dot + tld;
     }
     
     if (emailButton && nameInput) {
         emailButton.addEventListener('click', function() {
-            // If email not revealed, reveal it first
-            if (!emailRevealed && emailDisplay) {
-                emailDisplay.click();
-                return;
-            }
-            
             // Scroll to the form section smoothly
             const contactForm = document.querySelector('.contact-form');
             if (contactForm) {
