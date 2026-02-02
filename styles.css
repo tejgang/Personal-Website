@@ -9,45 +9,7 @@ html {
     scroll-behavior: smooth;
 }
 
-/* ========================================
-   NOISE/GRAIN TEXTURE OVERLAY
-   ======================================== */
-
-/* SVG filter for procedural noise - defined once, used globally */
-.grain-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1000;
-    opacity: 0.035;
-    mix-blend-mode: overlay;
-}
-
-.grain-overlay::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-    animation: grain-shift 0.5s steps(1) infinite;
-}
-
-@keyframes grain-shift {
-    0%, 100% { transform: translate(0, 0); }
-    25% { transform: translate(-2%, -2%); }
-    50% { transform: translate(2%, 2%); }
-    75% { transform: translate(-1%, 1%); }
-}
-
-/* ========================================
-   OPTIMIZED AMBIENT BACKGROUND EFFECTS
-   ======================================== */
-
+/* Optimized Ambient Background Effects */
 .ambient-bg {
     position: fixed;
     top: 0;
@@ -99,15 +61,11 @@ html {
     100% { transform: translateY(-100px); }
 }
 
-/* ========================================
-   BASE STYLES
-   ======================================== */
-
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     color: #ffffff;
-    background: #0a0a0a;
+    background: #0f0f0f;
     min-height: 100vh;
 }
 
@@ -123,15 +81,11 @@ body {
     position: relative;
 }
 
-/* ========================================
-   HEADER STYLES
-   ======================================== */
-
+/* Header Styles */
 header {
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     position: fixed;
     width: 100%;
     top: 0;
@@ -190,10 +144,7 @@ nav {
     color: #667eea;
 }
 
-/* ========================================
-   HERO SECTION - No background image
-   ======================================== */
-
+/* Hero Section */
 .hero {
     height: 100vh;
     display: flex;
@@ -203,11 +154,7 @@ nav {
     position: relative;
     padding-top: 80px;
     padding-bottom: 0;
-    /* Subtle gradient instead of image */
-    background: 
-        radial-gradient(ellipse at 20% 30%, rgba(102, 126, 234, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 70%, rgba(118, 75, 162, 0.06) 0%, transparent 50%),
-        linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 100%);
+    background: url('images/ChatGPT Image Jul 5, 2025, 04_48_48 PM.png') center/cover no-repeat fixed;
 }
 
 .hero::before {
@@ -217,15 +164,21 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background: transparent;
+    background: rgba(15, 15, 15, 0.6);
     z-index: 1;
 }
+
+
+
+
 
 .hero-content {
     position: relative;
     z-index: 2;
     width: 100%;
 }
+
+
 
 .cta-button {
     background: linear-gradient(45deg, #ff6b6b, #feca57);
@@ -258,10 +211,7 @@ nav {
     }
 }
 
-/* ========================================
-   SECTION STYLES
-   ======================================== */
-
+/* Section Styles */
 .section {
     padding: 6rem 0;
     margin: 0;
@@ -327,10 +277,7 @@ nav {
     border-radius: 2px;
 }
 
-/* ========================================
-   ABOUT SECTION
-   ======================================== */
-
+/* About Section */
 .about-content {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
@@ -359,7 +306,7 @@ nav {
     border-radius: 20px;
     overflow: hidden;
     margin: 0;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     opacity: 0;
     transform: scale(0.5);
     transition: all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -377,16 +324,16 @@ nav {
 }
 
 .about-text {
+
     font-size: 1rem;
     line-height: 1.6;
     color: #e0e0e0;
-    background: rgba(10, 10, 10, 0.7);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
     opacity: 0;
     transform: translateY(30px);
     transition: all 1.2s ease-out;
@@ -502,18 +449,11 @@ nav {
     line-height: 1.6;
 }
 
-/* ========================================
-   EXPERIENCE SECTION - No background image
-   ======================================== */
-
+/* Experience Section */
 #experience {
     position: relative;
     overflow: hidden;
-    /* Subtle gradient with slight purple tint */
-    background: 
-        radial-gradient(ellipse at 70% 20%, rgba(118, 75, 162, 0.06) 0%, transparent 50%),
-        radial-gradient(ellipse at 30% 80%, rgba(102, 126, 234, 0.05) 0%, transparent 50%),
-        linear-gradient(180deg, #0f0f0f 0%, #0a0a0a 50%, #0f0f0f 100%);
+    background: url('images/ChatGPT Image Jul 5, 2025, 04_48_48 PM.png') center/cover no-repeat fixed;
 }
 
 #experience::before {
@@ -523,7 +463,7 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background: transparent;
+    background: rgba(15, 15, 15, 0.6);
     z-index: 1;
 }
 
@@ -533,7 +473,7 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    opacity: 0.03;
+    opacity: 0.05;
     background: 
         radial-gradient(circle at 25% 25%, rgba(102, 126, 234, 0.3) 2px, transparent 2px),
         radial-gradient(circle at 75% 75%, rgba(118, 75, 162, 0.2) 1px, transparent 1px);
@@ -575,15 +515,16 @@ nav {
     width: 85%;
     margin-bottom: 2rem;
     padding-left: 2rem;
-    background: rgba(10, 10, 10, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     padding: 1.5rem;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     will-change: transform;
     transform: translateZ(0);
 }
+
 
 .experience-item::before {
     content: '';
@@ -650,143 +591,121 @@ nav {
     margin-bottom: 0.5rem;
 }
 
+/* New Experience Layout */
+
 /* Dot color will be set via CSS variable --dot-color per item */
-.experience-item::before {
+.experience-item::before{
     background: var(--dot-color, #667eea) !important;
 }
-
-.experience-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 2rem;
+.experience-wrapper{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:2rem;
 }
 
-.experience-timeline {
-    flex: 1 1 50%;
-    max-width: 50%;
+.experience-timeline{
+    flex:1 1 50%;
+    max-width:50%;
 }
 
-.experience-image {
-    flex: 1 1 45%;
-    max-width: 45%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.experience-image{
+    flex:1 1 45%;
+    max-width:45%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-.campus-image {
-    width: 100%;
+.campus-image{
+    width:100%;
     height: 600px;
-    border-radius: 12px;
-    object-fit: cover;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border-radius:12px;
+    object-fit:cover;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
-@media(max-width: 768px) {
-    .experience-wrapper {
-        flex-direction: column;
+@media(max-width: 768px){
+    .experience-wrapper{
+        flex-direction:column;
     }
-    .experience-timeline, .experience-image {
-        max-width: 100%;
+    .experience-timeline, .experience-image{
+        max-width:100%;
     }
 }
 
 /* Tighter spacing for experience cards */
-.experience-location {
+.experience-location{
     margin-bottom: 0.25rem;
 }
-
-.experience-item {
+.experience-item{
     padding-bottom: 1rem;
 }
 
-/* ========================================
-   MOBILE OVERRIDES
-   ======================================== */
-
-@media (max-width: 600px) {
-    .about-text {
-        padding-top: 1rem;
-        padding-bottom: 1.5rem;
-    }
+/* Mobile Overrides */
+@media (max-width: 600px){
+    .about-text{padding-top:1rem;padding-bottom:1.5rem;}
 
     /* hide about header and name for concise intro */
     .about-header,
     #typewriter-name,
-    .subtitle {
-        display: none !important;
+    .subtitle{
+        display:none !important;
     }
-
-    #about {
+    #about{
         padding-top: 20rem;
     }
 
     /* spacing before Experience section to avoid overlap */
-    #experience {
+    #experience{
         padding-top: 35rem;
     }
-
-    .experience-wrapper {
-        margin-top: 0;
-    }
+    .experience-wrapper{margin-top:0;}
 
     /* smaller section headers and allow wrapping */
-    .section-header {
+    .section-header{
         font-size: 1.8rem;
         line-height: 1.2;
         word-break: break-word;
     }
-
     /* prevent typewriter name overflow */
-    #typewriter-name {
+    #typewriter-name{
         font-size: clamp(1.8rem, 7vw, 2.4rem);
         white-space: nowrap;
         overflow: visible;
     }
-
-    body {
-        overflow-x: hidden;
-    }
+    body{overflow-x:hidden;}
 
     /* hide large images */
     .experience-image,
-    .about-image {
-        display: none !important;
+    .about-image{
+        display:none !important;
     }
 
     /* eliminate default highlight on phone links */
-    a[href^="tel"], a[href^="tel"]:visited {
-        color: inherit;
-        text-decoration: none;
-        -webkit-tap-highlight-color: transparent;
-    }
+a[href^="tel"], a[href^="tel"]:visited{
+    color: inherit;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
 
-    /* contact cards full width */
-    .contact-item {
+/* contact cards full width */
+    .contact-item{
         flex: 1 1 100%;
         max-width: 100%;
         margin: 0 0 1rem 0;
     }
-
-    .contact-content {
+    .contact-content{
         flex-direction: column;
         align-items: stretch;
     }
 }
 
-/* ========================================
-   PROJECTS SECTION - No background image
-   ======================================== */
-
+/* Projects Section */
 #projects {
     position: relative;
     overflow: hidden;
-    /* Subtle gradient with blue tint */
-    background: 
-        radial-gradient(ellipse at 20% 40%, rgba(102, 126, 234, 0.06) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 60%, rgba(118, 75, 162, 0.05) 0%, transparent 50%),
-        linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 50%, #0a0a0a 100%);
+    background: url('images/ChatGPT Image Jul 5, 2025, 04_48_48 PM.png') center/cover no-repeat fixed;
 }
 
 #projects::before {
@@ -796,7 +715,7 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background: transparent;
+    background: rgba(15, 15, 15, 0.6);
     z-index: 1;
 }
 
@@ -810,11 +729,11 @@ nav {
 }
 
 .project-card {
-    background: rgba(10, 10, 10, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     transform: translateZ(0);
     will-change: transform;
@@ -879,7 +798,7 @@ nav {
 
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
 }
 
 .project-image {
@@ -973,18 +892,11 @@ nav {
     box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
 }
 
-/* ========================================
-   SKILLS SECTION - No background image
-   ======================================== */
-
+/* Skills Section */
 #skills {
     position: relative;
     overflow: hidden;
-    /* Subtle gradient with mixed tints */
-    background: 
-        radial-gradient(ellipse at 60% 30%, rgba(118, 75, 162, 0.05) 0%, transparent 50%),
-        radial-gradient(ellipse at 40% 70%, rgba(102, 126, 234, 0.06) 0%, transparent 50%),
-        linear-gradient(180deg, #0f0f0f 0%, #0a0a0a 50%, #0f0f0f 100%);
+    background: url('images/ChatGPT Image Jul 5, 2025, 04_48_48 PM.png') center/cover no-repeat fixed;
 }
 
 #skills::before {
@@ -994,7 +906,7 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background: transparent;
+    background: rgba(15, 15, 15, 0.6);
     z-index: 1;
 }
 
@@ -1011,11 +923,11 @@ nav {
 }
 
 .skill-category {
-    background: rgba(10, 10, 10, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 2rem;
     border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     text-align: center;
     opacity: 0;
     transform: scale(0.9) translateY(30px) translateZ(0);
@@ -1031,6 +943,7 @@ nav {
 .skill-category.animate-in:hover {
     transform: scale(1) translateY(-5px) translateZ(0);
 }
+
 
 .skill-icon {
     width: 80px;
@@ -1063,12 +976,12 @@ nav {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #141414;
+    background: #1a1a1a;
     padding: 1rem;
     border-radius: 20px;
     width: 80px;
     height: 80px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 2px solid #333333;
     transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
@@ -1117,26 +1030,19 @@ nav {
 }
 
 .skill-item {
-    background: #141414;
+    background: #1a1a1a;
     padding: 0.4rem 0.8rem;
     border-radius: 15px;
     font-size: 0.9rem;
     color: #b0b0b0;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid #333333;
 }
 
-/* ========================================
-   CONTACT SECTION - No background image
-   ======================================== */
-
+/* Contact Section */
 #contact {
     position: relative;
     overflow: hidden;
-    /* Subtle gradient with purple dominant */
-    background: 
-        radial-gradient(ellipse at 30% 50%, rgba(102, 126, 234, 0.06) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 30%, rgba(118, 75, 162, 0.05) 0%, transparent 50%),
-        linear-gradient(180deg, #0a0a0a 0%, #0f0f0f 50%, #0a0a0a 100%);
+    background: url('images/ChatGPT Image Jul 5, 2025, 04_48_48 PM.png') center/cover no-repeat fixed;
 }
 
 #contact::before {
@@ -1146,7 +1052,7 @@ nav {
     left: 0;
     right: 0;
     bottom: 0;
-    background: transparent;
+    background: rgba(15, 15, 15, 0.6);
     z-index: 1;
 }
 
@@ -1160,11 +1066,11 @@ nav {
 }
 
 .contact-info {
-    background: rgba(10, 10, 10, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 2rem;
     border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     transform: translateZ(0);
 }
 
@@ -1173,10 +1079,9 @@ nav {
     align-items: center;
     margin-bottom: 2rem;
     padding: 1rem;
-    background: #141414;
+    background: #1a1a1a;
     border-radius: 10px;
     transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .contact-item:hover {
@@ -1199,11 +1104,11 @@ nav {
 }
 
 .contact-form {
-    background: rgba(10, 10, 10, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 2rem;
     border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     transform: translateZ(0);
 }
 
@@ -1222,19 +1127,18 @@ nav {
 .form-group textarea {
     width: 100%;
     padding: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 2px solid #333333;
     border-radius: 10px;
     font-size: 1rem;
-    background: #0a0a0a;
+    background: #0f0f0f;
     color: #ffffff;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: border-color 0.3s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
     border-color: #667eea;
-    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
 }
 
 .form-group textarea {
@@ -1260,22 +1164,15 @@ nav {
     box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
 }
 
-/* ========================================
-   FOOTER
-   ======================================== */
-
+/* Footer */
 footer {
-    background: #0a0a0a;
+    background: #2c3e50;
     color: white;
     text-align: center;
     padding: 2rem 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* ========================================
-   RESPONSIVE DESIGN
-   ======================================== */
-
+/* Responsive Design */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -1323,10 +1220,7 @@ footer {
     }
 }
 
-/* ========================================
-   SCROLL ANIMATION STYLES
-   ======================================== */
-
+/* Scroll Animation Styles */
 .animate-slide-up {
     opacity: 0;
     transform: translateY(50px);
@@ -1354,10 +1248,7 @@ footer {
     transition-delay: 0.4s;
 }
 
-/* ========================================
-   TYPEWRITER EFFECT
-   ======================================== */
-
+/* Typewriter Effect */
 #typewriter-name {
     position: relative;
     display: inline-block;
