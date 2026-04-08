@@ -9,6 +9,13 @@ const BTN_LABELS = {
   error: 'Error – Try Again',
 }
 
+const STATUS_ANNOUNCEMENTS = {
+  idle: '',
+  sending: 'Sending your message, please wait.',
+  sent: 'Message sent successfully.',
+  error: 'There was an error sending your message. Please try again.',
+}
+
 export default function ContactForm({ formRef, nameInputRef }) {
   const [status, setStatus] = useState('idle')
 
@@ -27,10 +34,10 @@ export default function ContactForm({ formRef, nameInputRef }) {
 
     try {
       await emailjs.send(
-        'service_ckxe5g7',
-        'template_atvc8n3',
+        import.meta.env.VITE_EMAILJS_SERVICE,
+        import.meta.env.VITE_EMAILJS_TEMPLATE,
         templateParams,
-        'vgRr7rMZBv_4OI6KH',
+        import.meta.env.VITE_EMAILJS_KEY,
       )
       setStatus('sent')
       setTimeout(() => {
@@ -46,6 +53,11 @@ export default function ContactForm({ formRef, nameInputRef }) {
 
   return (
     <form className={styles.contactForm} onSubmit={handleSubmit} ref={formRef}>
+      {/* Screen reader announcements for form status */}
+      <div aria-live="polite" aria-atomic="true" className={styles.srOnly}>
+        {STATUS_ANNOUNCEMENTS[status]}
+      </div>
+
       <div className={styles.formGroup}>
         <label htmlFor="name">Name</label>
         <input type="text" id="name" name="name" ref={nameInputRef} required />
