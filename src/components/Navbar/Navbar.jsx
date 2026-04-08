@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './Navbar.module.css'
 
 const navItems = [
@@ -11,6 +11,14 @@ const navItems = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
+
+  useEffect(() => {
+    function onKeyDown(e) {
+      if (e.key === 'Escape' && menuOpen) setMenuOpen(false)
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [menuOpen])
 
   function handleNavClick(e, href) {
     e.preventDefault()

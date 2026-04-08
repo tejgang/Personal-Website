@@ -51,6 +51,10 @@ export default function Contact() {
             <div
               className={`${styles.contactItem} ${styles.emailClickable}`}
               onClick={handleEmailClick}
+              onKeyDown={e => e.key === 'Enter' && handleEmailClick()}
+              tabIndex={0}
+              role="button"
+              aria-label="Click to open contact form"
             >
               <div className={styles.contactIcon}>
                 <img src="/images/gmail-new.png" alt="Email" style={{ width: 32, height: 32 }} />

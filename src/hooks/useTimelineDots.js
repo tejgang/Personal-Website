@@ -40,11 +40,22 @@ export function useTimelineDots(timelineRef, itemsRef) {
       })
     }
 
+    let ticking = false
+    function onScroll() {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateDotColors()
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
     updateDotColors()
-    window.addEventListener('scroll', updateDotColors)
+    window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', updateDotColors)
     return () => {
-      window.removeEventListener('scroll', updateDotColors)
+      window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', updateDotColors)
     }
   }, [timelineRef, itemsRef])
