@@ -48,7 +48,7 @@ export const skillCategories = [
       { name: 'Jupyter', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg' },
       { name: 'GCP', img: '/images/gcp-logo-cropped.png' },
       { name: 'Docker', img: '/images/docker-icon.webp' },
-      { name: 'FastMCP', img: '/images/favicon.svg' },
+      { name: 'FastMCP', img: '/images/fastmcp.svg' },
     ],
   },
 ]
