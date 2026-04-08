@@ -46,7 +46,7 @@ export const skillCategories = [
       { name: 'Tableau', img: 'https://cdn.worldvectorlogo.com/logos/tableau-software.svg' },
       { name: 'Django', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg' },
       { name: 'Jupyter', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg' },
-      { name: 'GCP', img: '/images/gcp-logo-cropped.png' },
+      { name: 'GCP', img: '/images/gcplogo.png' },
       { name: 'Docker', img: '/images/docker-icon.webp' },
       { name: 'FastMCP', img: '/images/fastmcp.svg' },
     ],
