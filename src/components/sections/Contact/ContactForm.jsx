@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import emailjs from '@emailjs/browser'
 import styles from './Contact.module.css'
 
 const BTN_LABELS = {
@@ -33,6 +32,7 @@ export default function ContactForm({ formRef, nameInputRef }) {
     }
 
     try {
+      const emailjs = (await import('@emailjs/browser')).default
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE,
         import.meta.env.VITE_EMAILJS_TEMPLATE,

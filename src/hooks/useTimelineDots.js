@@ -19,6 +19,10 @@ const END_COLOR = '#764ba2'
 
 export function useTimelineDots(timelineRef, itemsRef) {
   useEffect(() => {
+    // Compute once — these never change
+    const c1 = hexToRgb(START_COLOR)
+    const c2 = hexToRgb(END_COLOR)
+
     function updateDotColors() {
       const timeline = timelineRef.current
       if (!timeline) return
@@ -31,8 +35,6 @@ export function useTimelineDots(timelineRef, itemsRef) {
         const itemCenter = itemRect.top + itemRect.height / 2
         const ratio = (itemCenter - rect.top) / rect.height
         const t = Math.min(Math.max(ratio, 0), 1)
-        const c1 = hexToRgb(START_COLOR)
-        const c2 = hexToRgb(END_COLOR)
         const r = Math.round(lerp(c1.r, c2.r, t))
         const g = Math.round(lerp(c1.g, c2.g, t))
         const b = Math.round(lerp(c1.b, c2.b, t))

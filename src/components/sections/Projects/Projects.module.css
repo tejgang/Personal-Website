@@ -48,12 +48,12 @@
   overflow: hidden;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  will-change: transform;
 }
 
 .projectCard:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  will-change: transform;
 }
 
 /* Image area with emoji + hover reveal */

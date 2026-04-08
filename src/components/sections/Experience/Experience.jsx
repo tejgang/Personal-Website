@@ -59,6 +59,8 @@ export default function Experience() {
               alt="Aerial ocean view"
               className={styles.campusImage}
               loading="lazy"
+              width={600}
+              height={600}
             />
           </motion.div>
         </div>

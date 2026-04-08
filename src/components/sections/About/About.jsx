@@ -25,7 +25,7 @@ export default function About() {
 
             <div className={styles.leftColumn}>
               <div className={`${styles.aboutImage} ${imageVisible ? styles.bounceIn : ''}`}>
-                <img src="/images/IMG_8674.png" alt="Tej Gangupantula" loading="eager" />
+                <img src="/images/IMG_8674.png" alt="Tej Gangupantula" loading="eager" width={400} height={550} />
               </div>
             </div>
 

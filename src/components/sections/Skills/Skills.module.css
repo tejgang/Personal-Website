@@ -51,8 +51,13 @@
   border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   text-align: center;
-  will-change: transform;
   cursor: default;
+  transition: transform 0.3s ease;
+}
+
+.skillCategory:hover {
+  transform: translateY(-5px);
+  will-change: transform;
 }
 
 .skillIcon {

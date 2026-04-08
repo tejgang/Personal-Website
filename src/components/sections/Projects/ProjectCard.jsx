@@ -1,7 +1,8 @@
+import { memo } from 'react'
 import { motion } from 'framer-motion'
 import styles from './Projects.module.css'
 
-export default function ProjectCard({ project, index }) {
+const ProjectCard = memo(function ProjectCard({ project, index }) {
   return (
     <motion.div
       className={styles.projectCard}
@@ -21,6 +22,8 @@ export default function ProjectCard({ project, index }) {
           alt={project.title}
           className={styles.projectHoverImage}
           loading="lazy"
+          width={350}
+          height={200}
         />
       </div>
       <div className={styles.projectContent}>
@@ -47,4 +50,6 @@ export default function ProjectCard({ project, index }) {
       </div>
     </motion.div>
   )
-}
+})
+
+export default ProjectCard

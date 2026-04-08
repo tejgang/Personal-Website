@@ -1,7 +1,8 @@
+import { memo } from 'react'
 import { motion } from 'framer-motion'
 import styles from './Skills.module.css'
 
-export default function SkillCategory({ category, index }) {
+const SkillCategory = memo(function SkillCategory({ category, index }) {
   return (
     <motion.div
       className={styles.skillCategory}
@@ -13,7 +14,6 @@ export default function SkillCategory({ category, index }) {
         ease: [0.25, 0.46, 0.45, 0.94],
       }}
       viewport={{ once: true, margin: '-50px' }}
-      whileHover={{ y: -5 }}
     >
       <div className={styles.skillIcon}>{category.icon}</div>
       <h3>{category.title}</h3>
@@ -27,4 +27,6 @@ export default function SkillCategory({ category, index }) {
       </div>
     </motion.div>
   )
-}
+})
+
+export default SkillCategory
