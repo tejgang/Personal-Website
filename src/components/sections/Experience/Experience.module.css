@@ -159,7 +159,7 @@
 /* IMAGE COLUMN */
 .imageColumn {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .photoWrapper {
