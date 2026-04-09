@@ -125,77 +125,79 @@ export default function Contact() {
             </a>
           </div>
 
-          {/* Get in Touch toggle button */}
-          <button
-            className={styles.toggleBtn}
-            onClick={() => setFormOpen(prev => !prev)}
-            aria-expanded={formOpen}
-            disabled={status === 'sending'}
-          >
-            {formOpen ? 'Close ✕' : 'Get in Touch'}
-          </button>
+          {/* Button + form column */}
+          <div className={styles.contactRight}>
+            <button
+              className={styles.toggleBtn}
+              onClick={() => setFormOpen(prev => !prev)}
+              aria-expanded={formOpen}
+              disabled={status === 'sending'}
+            >
+              {formOpen ? 'Close ✕' : 'Get in Touch'}
+            </button>
 
-          {/* Expandable form */}
-          <AnimatePresence>
-            {formOpen && (
-              <motion.div
-                className={styles.formWrapper}
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.35, ease: 'easeInOut' }}
-                style={{ overflow: 'hidden' }}
-              >
-                <form className={styles.form} onSubmit={handleSubmit}>
-                  {/* Honeypot for spam bots */}
-                  <input type="text" name="_gotcha" style={{ display: 'none' }} aria-hidden="true" tabIndex={-1} />
-                  <div className={styles.formRow}>
-                    <label htmlFor="contact-name" className={styles.formLabel}>Name</label>
-                    <input
-                      id="contact-name"
-                      name="name"
-                      type="text"
-                      required
-                      className={styles.formInput}
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div className={styles.formRow}>
-                    <label htmlFor="contact-email" className={styles.formLabel}>Email</label>
-                    <input
-                      id="contact-email"
-                      name="email"
-                      type="email"
-                      required
-                      className={styles.formInput}
-                      placeholder="your@email.com"
-                    />
-                  </div>
-                  <div className={styles.formRow}>
-                    <label htmlFor="contact-message" className={styles.formLabel}>Message</label>
-                    <textarea
-                      id="contact-message"
-                      name="message"
-                      required
-                      rows={4}
-                      className={styles.formTextarea}
-                      placeholder="What's on your mind?"
-                    />
-                  </div>
-                  <button
-                    type="submit"
-                    className={styles.submitBtn}
-                    disabled={status === 'sending'}
-                  >
-                    {status === 'idle' && 'Send Message'}
-                    {status === 'sending' && 'Sending...'}
-                    {status === 'sent' && 'Sent ✓'}
-                    {status === 'error' && 'Error — try again'}
-                  </button>
-                </form>
-              </motion.div>
-            )}
-          </AnimatePresence>
+            {/* Expandable form */}
+            <AnimatePresence>
+              {formOpen && (
+                <motion.div
+                  className={styles.formWrapper}
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.35, ease: 'easeInOut' }}
+                  style={{ overflow: 'hidden' }}
+                >
+                  <form className={styles.form} onSubmit={handleSubmit}>
+                    {/* Honeypot for spam bots */}
+                    <input type="text" name="_gotcha" style={{ display: 'none' }} aria-hidden="true" tabIndex={-1} />
+                    <div className={styles.formRow}>
+                      <label htmlFor="contact-name" className={styles.formLabel}>Name</label>
+                      <input
+                        id="contact-name"
+                        name="name"
+                        type="text"
+                        required
+                        className={styles.formInput}
+                        placeholder="Your name"
+                      />
+                    </div>
+                    <div className={styles.formRow}>
+                      <label htmlFor="contact-email" className={styles.formLabel}>Email</label>
+                      <input
+                        id="contact-email"
+                        name="email"
+                        type="email"
+                        required
+                        className={styles.formInput}
+                        placeholder="your@email.com"
+                      />
+                    </div>
+                    <div className={styles.formRow}>
+                      <label htmlFor="contact-message" className={styles.formLabel}>Message</label>
+                      <textarea
+                        id="contact-message"
+                        name="message"
+                        required
+                        rows={4}
+                        className={styles.formTextarea}
+                        placeholder="What's on your mind?"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className={styles.submitBtn}
+                      disabled={status === 'sending'}
+                    >
+                      {status === 'idle' && 'Send Message'}
+                      {status === 'sending' && 'Sending...'}
+                      {status === 'sent' && 'Sent ✓'}
+                      {status === 'error' && 'Error — try again'}
+                    </button>
+                  </form>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </motion.div>
       </div>
     </section>
