@@ -93,7 +93,7 @@ export default function Contact() {
             >
               <div className={styles.contactItem}>
                 <div className={styles.contactIcon}>
-                  <img src="/images/github.png" alt="GitHub" width={36} height={36} />
+                  <img src="/images/icone-github-bleu.png" alt="GitHub" width={36} height={36} />
                 </div>
                 <div>
                   <strong>GitHub</strong>
