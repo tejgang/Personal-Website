@@ -34,6 +34,12 @@
   color: #ffffff;
   z-index: 1100;
   position: relative;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.logo:hover {
+  color: #0ea5e9;
 }
 
 /* ── Desktop nav links ── */

@@ -25,7 +25,9 @@ export default function Navbar() {
     setMenuOpen(false)
     const target = document.querySelector(href)
     if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      const navHeight = document.querySelector('header')?.offsetHeight || 70
+      const top = target.getBoundingClientRect().top + window.scrollY - navHeight
+      window.scrollTo({ top, behavior: 'smooth' })
     }
   }
 
