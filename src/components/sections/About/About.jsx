@@ -12,20 +12,23 @@ export default function About() {
   const { displayed: nameDisplayed, done: nameDone } = useTypewriter('Tej Gangupantula', 500, 80)
 
   const [photoIdx, setPhotoIdx] = useState(0)
+  const [prevIdx, setPrevIdx] = useState(null)
   const [direction, setDirection] = useState('next')
+  const animTimerRef = useRef(null)
   const photos = [
     { src: '/images/IMG_8674.png', alt: 'Tej Gangupantula' },
     { src: '/images/cat-gray.jpg', alt: 'Billu' },
     { src: '/images/cat-tabby.jpg', alt: 'Sheru' },
   ]
-  function prevPhoto() {
-    setDirection('prev')
-    setPhotoIdx(i => (i - 1 + photos.length) % photos.length)
+  function goTo(newIdx, dir) {
+    clearTimeout(animTimerRef.current)
+    setPrevIdx(photoIdx)
+    setDirection(dir)
+    setPhotoIdx(newIdx)
+    animTimerRef.current = setTimeout(() => setPrevIdx(null), 500)
   }
-  function nextPhoto() {
-    setDirection('next')
-    setPhotoIdx(i => (i + 1) % photos.length)
-  }
+  function prevPhoto() { goTo((photoIdx - 1 + photos.length) % photos.length, 'prev') }
+  function nextPhoto() { goTo((photoIdx + 1) % photos.length, 'next') }
 
   return (
     <section id="about" className={styles.hero} ref={sectionRef}>
@@ -99,17 +102,30 @@ export default function About() {
             transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
             viewport={{ once: true, margin: '-50px' }}
           >
-            <div className={styles.photoWrapper}>
-              <div className={styles.carouselWrapper}>
-                <img
-                  key={photoIdx}
-                  src={photos[photoIdx].src}
-                  alt={photos[photoIdx].alt}
-                  className={`${styles.profileImg} ${direction === 'next' ? styles.slideNext : styles.slidePrev}`}
-                  loading="eager"
-                  width={400}
-                  height={550}
-                />
+            <div className={styles.carouselOuter}>
+              <div className={styles.photoWrapper}>
+                <div className={styles.carouselWrapper}>
+                  <div className={styles.carouselInner}>
+                    {prevIdx !== null && (
+                      <img
+                        src={photos[prevIdx].src}
+                        alt={photos[prevIdx].alt}
+                        className={styles.profileImg}
+                        width={400}
+                        height={550}
+                      />
+                    )}
+                    <img
+                      key={photoIdx}
+                      src={photos[photoIdx].src}
+                      alt={photos[photoIdx].alt}
+                      className={`${styles.profileImg} ${direction === 'next' ? styles.slideNext : styles.slidePrev}`}
+                      loading="eager"
+                      width={400}
+                      height={550}
+                    />
+                  </div>
+                </div>
               </div>
               <div className={styles.carouselControls}>
                 <button className={styles.carouselBtn} onClick={prevPhoto} aria-label="Previous photo">‹</button>
@@ -117,7 +133,7 @@ export default function About() {
                   <button
                     key={i}
                     className={`${styles.carouselDot} ${i === photoIdx ? styles.activeDot : ''}`}
-                    onClick={() => { setDirection(i > photoIdx ? 'next' : 'prev'); setPhotoIdx(i) }}
+                    onClick={() => goTo(i, i > photoIdx ? 'next' : 'prev')}
                     aria-label={`Photo ${i + 1}`}
                   />
                 ))}

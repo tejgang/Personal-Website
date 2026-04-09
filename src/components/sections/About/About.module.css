@@ -208,17 +208,31 @@
 }
 
 /* Carousel */
+.carouselOuter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .carouselWrapper {
   position: relative;
-  width: 100%;
-  max-width: 360px;
+  width: 360px;
   aspect-ratio: 400 / 550;
   overflow: hidden;
   border-radius: 8px;
   border: 1px solid rgba(14, 165, 233, 0.35);
 }
 
+.carouselInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 .carouselWrapper .profileImg {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   max-width: none;
@@ -238,11 +252,11 @@
 }
 
 .slideNext {
-  animation: slideInFromRight 0.35s ease;
+  animation: slideInFromRight 0.5s ease;
 }
 
 .slidePrev {
-  animation: slideInFromLeft 0.35s ease;
+  animation: slideInFromLeft 0.5s ease;
 }
 
 .carouselControls {
@@ -295,7 +309,7 @@
     gap: 2rem;
   }
 
-  .profileImg {
-    max-width: 240px;
+  .carouselWrapper {
+    width: 240px;
   }
 }
