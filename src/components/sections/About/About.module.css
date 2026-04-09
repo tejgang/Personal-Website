@@ -210,26 +210,15 @@
 /* Carousel */
 .carouselWrapper {
   position: relative;
-  aspect-ratio: 3/4;
-  overflow: hidden;
-  border-radius: 8px;
-  border: 1px solid rgba(14, 165, 233, 0.35);
 }
 
-.carouselTrack {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+@keyframes carouselFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-.carouselTrack .profileImg {
-  flex: 0 0 100%;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 0;
-  border: none;
+.carouselWrapper .profileImg {
+  animation: carouselFade 0.35s ease;
 }
 
 .carouselControls {

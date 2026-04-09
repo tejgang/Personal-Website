@@ -94,22 +94,15 @@ export default function About() {
           >
             <div className={styles.photoWrapper}>
               <div className={styles.carouselWrapper}>
-                <div
-                  className={styles.carouselTrack}
-                  style={{ transform: `translateX(-${photoIdx * 100}%)` }}
-                >
-                  {photos.map((photo, i) => (
-                    <img
-                      key={i}
-                      src={photo.src}
-                      alt={photo.alt}
-                      className={styles.profileImg}
-                      loading={i === 0 ? 'eager' : 'lazy'}
-                      width={400}
-                      height={550}
-                    />
-                  ))}
-                </div>
+                <img
+                  key={photoIdx}
+                  src={photos[photoIdx].src}
+                  alt={photos[photoIdx].alt}
+                  className={styles.profileImg}
+                  loading="eager"
+                  width={400}
+                  height={550}
+                />
               </div>
               <div className={styles.carouselControls}>
                 <button className={styles.carouselBtn} onClick={prevPhoto} aria-label="Previous photo">‹</button>
