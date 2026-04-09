@@ -17,12 +17,9 @@
   background: linear-gradient(180deg, #667eea, transparent);
 }
 
-.heroContent {
-  width: 100%;
-}
-
 /* Two-column grid: text left, image right */
 .heroContent {
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
@@ -30,7 +27,7 @@
 }
 
 /* IMAGE COLUMN */
-.leftColumn {
+.imageColumn {
   display: flex;
   justify-content: center;
 }
@@ -137,7 +134,7 @@
   font-size: 0.6rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #555;
+  color: #888;
   margin: 0 0 1.2rem;
 }
 

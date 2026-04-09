@@ -6,13 +6,13 @@ import { useScramble } from '../../../hooks/useScramble'
 import styles from './About.module.css'
 
 export default function About() {
-  const titleRef = useRef(null)
-  const titleInView = useInView(titleRef, { once: true })
-  const scrambledTitle = useScramble('About Me', titleInView)
+  const sectionRef = useRef(null)
+  const sectionInView = useInView(sectionRef, { once: true, margin: '-50px' })
+  const scrambledTitle = useScramble('About Me', sectionInView)
   const { displayed, done } = useTypewriter('Data Scientist & ML Engineer', 2000, 80)
 
   return (
-    <section id="about" className={styles.hero}>
+    <section id="about" className={styles.hero} ref={sectionRef}>
       <div className="container">
         <div className={styles.heroContent}>
 
@@ -38,7 +38,7 @@ export default function About() {
               {!done && <span className={styles.cursor}>|</span>}
             </p>
 
-            <p ref={titleRef} className={styles.sectionLabel}>{scrambledTitle}</p>
+            <p className={styles.sectionLabel} aria-hidden="true">{scrambledTitle}</p>
 
             <div className={styles.aboutDescription}>
               <p>
@@ -88,7 +88,7 @@ export default function About() {
 
           {/* Right: image */}
           <motion.div
-            className={styles.leftColumn}
+            className={styles.imageColumn}
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
