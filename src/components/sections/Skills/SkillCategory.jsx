@@ -5,13 +5,22 @@ import styles from './Skills.module.css'
 
 const SIZE = 360        // container px
 const CENTER = SIZE / 2  // 180
-const RADIUS = 130       // distance from center to skill bubbles
+const RADIUS = 130       // distance from center to skill bubble centers
+const CENTER_BUBBLE_R = 40  // half of 80px center bubble
+const SKILL_BUBBLE_R = 24   // half of 48px skill bubble
 
 function getPosition(index, total) {
   const angle = (2 * Math.PI / total) * index - Math.PI / 2
+  const cos = Math.cos(angle)
+  const sin = Math.sin(angle)
   return {
-    x: CENTER + Math.cos(angle) * RADIUS,
-    y: CENTER + Math.sin(angle) * RADIUS,
+    x: CENTER + cos * RADIUS,
+    y: CENTER + sin * RADIUS,
+    // spoke starts at edge of center bubble, ends at edge of skill bubble
+    startX: CENTER + cos * CENTER_BUBBLE_R,
+    startY: CENTER + sin * CENTER_BUBBLE_R,
+    endX: CENTER + cos * (RADIUS - SKILL_BUBBLE_R),
+    endY: CENTER + sin * (RADIUS - SKILL_BUBBLE_R),
   }
 }
 
@@ -30,11 +39,11 @@ const SkillWeb = memo(function SkillWeb({ category, index: categoryIndex }) {
         aria-hidden="true"
       >
         {category.skills.map((skill, i) => {
-          const { x, y } = getPosition(i, category.skills.length)
+          const { startX, startY, endX, endY } = getPosition(i, category.skills.length)
           return (
             <motion.path
               key={skill.name}
-              d={`M ${CENTER} ${CENTER} L ${x} ${y}`}
+              d={`M ${startX} ${startY} L ${endX} ${endY}`}
               stroke="rgba(14, 165, 233, 0.25)"
               strokeWidth="1"
               fill="none"
@@ -64,6 +73,7 @@ const SkillWeb = memo(function SkillWeb({ category, index: categoryIndex }) {
       {/* Skill bubbles — bouncy hover */}
       {category.skills.map((skill, i) => {
         const { x, y } = getPosition(i, category.skills.length)
+
         return (
           <motion.div
             key={skill.name}
