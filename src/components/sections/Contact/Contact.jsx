@@ -1,66 +1,71 @@
+// src/components/sections/Contact/Contact.jsx
 import { useEffect, useRef, useState } from 'react'
-import { motion } from 'framer-motion'
-import ContactForm from './ContactForm'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
+import { useScramble } from '../../../hooks/useScramble'
 import styles from './Contact.module.css'
 
 export default function Contact() {
+  const titleRef = useRef(null)
+  const titleInView = useInView(titleRef, { once: true })
+  const scrambledTitle = useScramble('Contact', titleInView)
+
   const [email, setEmail] = useState('')
-  const formRef = useRef(null)
-  const nameInputRef = useRef(null)
+  const [formOpen, setFormOpen] = useState(false)
+  const [status, setStatus] = useState('idle') // idle | sending | sent | error
 
   useEffect(() => {
-    // Obfuscated to deter email scrapers
     const user = String.fromCharCode(116,101,106,103,97,110,103,117,112,97,110,116,117,108,97)
     const domain = String.fromCharCode(103,109,97,105,108)
     const tld = String.fromCharCode(99,111,109)
     setEmail(`${user}@${domain}.${tld}`)
   }, [])
 
-  function handleEmailClick() {
-    if (formRef.current) {
-      formRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      setTimeout(() => {
-        if (nameInputRef.current) nameInputRef.current.focus()
-      }, 100)
+  async function handleSubmit(e) {
+    e.preventDefault()
+    setStatus('sending')
+    const data = new FormData(e.target)
+    try {
+      const res = await fetch('https://formspree.io/f/YOUR_FORMSPREE_ID', {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      })
+      if (res.ok) {
+        setStatus('sent')
+        e.target.reset()
+        setTimeout(() => setStatus('idle'), 3000)
+      } else {
+        setStatus('error')
+        setTimeout(() => setStatus('idle'), 3000)
+      }
+    } catch {
+      setStatus('error')
+      setTimeout(() => setStatus('idle'), 3000)
     }
   }
 
   return (
     <section id="contact" className={styles.section}>
-      <div className={styles.overlay} />
       <div className="container">
-        <motion.h2
-          className={styles.sectionHeader}
-          initial={{ opacity: 0, y: 50, scale: 0.9 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+        <h2 ref={titleRef} className={styles.sectionHeader}>
+          {scrambledTitle}
+        </h2>
+
+        <motion.div
+          className={styles.contactContent}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
           viewport={{ once: true, margin: '-50px' }}
         >
-          Get In Touch
-        </motion.h2>
-
-        <div className={styles.contactContent}>
-          {/* Contact info cards */}
-          <motion.div
-            className={styles.contactInfo}
-            initial={{ opacity: 0, scale: 0.9, y: 30 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-            viewport={{ once: true, margin: '-50px' }}
-          >
-            <div
-              className={`${styles.contactItem} ${styles.emailClickable}`}
-              onClick={handleEmailClick}
-              onKeyDown={e => e.key === 'Enter' && handleEmailClick()}
-              tabIndex={0}
-              role="button"
-              aria-label="Click to open contact form"
-            >
+          {/* Info cards */}
+          <div className={styles.contactCards}>
+            <div className={styles.contactItem}>
               <div className={styles.contactIcon}>
-                <img src="/images/gmail-new.png" alt="Email" style={{ width: 32, height: 32 }} />
+                <img src="/images/gmail-new.png" alt="Email" width={28} height={28} />
               </div>
               <div>
-                <strong>Email</strong><br />
+                <strong>Email</strong>
                 <span>{email}</span>
               </div>
             </div>
@@ -68,8 +73,8 @@ export default function Contact() {
             <div className={styles.contactItem}>
               <div className={styles.contactIcon}>📍</div>
               <div>
-                <strong>Location</strong><br />
-                Santa Barbara, CA
+                <strong>Location</strong>
+                <span>Santa Barbara, CA</span>
               </div>
             </div>
 
@@ -81,11 +86,11 @@ export default function Contact() {
             >
               <div className={styles.contactItem}>
                 <div className={styles.contactIcon}>
-                  <img src="/images/github.png" alt="GitHub" style={{ width: 40, height: 40 }} />
+                  <img src="/images/github.png" alt="GitHub" width={36} height={36} />
                 </div>
                 <div>
-                  <strong>GitHub</strong><br />
-                  github.com/tejgang
+                  <strong>GitHub</strong>
+                  <span>github.com/tejgang</span>
                 </div>
               </div>
             </a>
@@ -101,27 +106,87 @@ export default function Contact() {
                   <img
                     src="/images/linkedin-logo-linkedin-icon-transparent-free-png.png"
                     alt="LinkedIn"
-                    style={{ width: 53, height: 53 }}
+                    width={40}
+                    height={40}
                   />
                 </div>
                 <div>
-                  <strong>LinkedIn</strong><br />
-                  linkedin.com/in/tejgangupantula
+                  <strong>LinkedIn</strong>
+                  <span>linkedin.com/in/tejgangupantula</span>
                 </div>
               </div>
             </a>
-          </motion.div>
+          </div>
 
-          {/* Contact form */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 30 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-            viewport={{ once: true, margin: '-50px' }}
+          {/* Get in Touch toggle button */}
+          <button
+            className={styles.toggleBtn}
+            onClick={() => setFormOpen(prev => !prev)}
+            aria-expanded={formOpen}
           >
-            <ContactForm formRef={formRef} nameInputRef={nameInputRef} />
-          </motion.div>
-        </div>
+            {formOpen ? 'Close ✕' : 'Get in Touch →'}
+          </button>
+
+          {/* Expandable form */}
+          <AnimatePresence>
+            {formOpen && (
+              <motion.div
+                className={styles.formWrapper}
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.35, ease: 'easeInOut' }}
+                style={{ overflow: 'hidden' }}
+              >
+                <form className={styles.form} onSubmit={handleSubmit}>
+                  <div className={styles.formRow}>
+                    <label htmlFor="contact-name" className={styles.formLabel}>Name</label>
+                    <input
+                      id="contact-name"
+                      name="name"
+                      type="text"
+                      required
+                      className={styles.formInput}
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div className={styles.formRow}>
+                    <label htmlFor="contact-email" className={styles.formLabel}>Email</label>
+                    <input
+                      id="contact-email"
+                      name="email"
+                      type="email"
+                      required
+                      className={styles.formInput}
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                  <div className={styles.formRow}>
+                    <label htmlFor="contact-message" className={styles.formLabel}>Message</label>
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      required
+                      rows={4}
+                      className={styles.formTextarea}
+                      placeholder="What's on your mind?"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className={styles.submitBtn}
+                    disabled={status === 'sending'}
+                  >
+                    {status === 'idle' && 'Send Message'}
+                    {status === 'sending' && 'Sending...'}
+                    {status === 'sent' && 'Sent ✓'}
+                    {status === 'error' && 'Error — try again'}
+                  </button>
+                </form>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   )
