@@ -46,8 +46,8 @@
 /* Web container — fixed square, positions children absolutely */
 .webWrapper {
   position: relative;
-  width: 360px;
-  height: 360px;
+  width: 420px;
+  height: 420px;
   flex-shrink: 0;
 }
 

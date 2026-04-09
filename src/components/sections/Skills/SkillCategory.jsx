@@ -3,9 +3,9 @@ import { memo, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import styles from './Skills.module.css'
 
-const SIZE = 360        // container px
-const CENTER = SIZE / 2  // 180
-const RADIUS = 130       // distance from center to skill bubble centers
+const SIZE = 420        // container px
+const CENTER = SIZE / 2  // 210
+const RADIUS = 155       // distance from center to skill bubble centers
 const CENTER_BUBBLE_R = 40  // half of 80px center bubble
 const SKILL_BUBBLE_R = 24   // half of 48px skill bubble
 
