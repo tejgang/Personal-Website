@@ -77,7 +77,7 @@
 /* Timeline dot — rendered as motion.div so it can animate after the card */
 .timelineDot {
   position: absolute;
-  left: calc(-1.5rem - 6px); /* centers 12px dot on the 2px timeline line */
+  left: calc(-1.5rem - 1px); /* aligns with line center; x:'-50%' in JSX finishes centering */
   top: 1.4rem;
   width: 12px;
   height: 12px;

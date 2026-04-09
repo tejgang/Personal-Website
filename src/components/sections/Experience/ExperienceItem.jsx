@@ -23,6 +23,7 @@ export default function ExperienceItem({ exp, index }) {
     >
       <motion.div
         className={styles.timelineDot}
+        style={{ x: '-50%' }}
         initial={{ opacity: 0, scale: 0 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.25, delay: dotDelay, ease: 'easeOut' }}
