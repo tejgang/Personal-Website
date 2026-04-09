@@ -1,0 +1,15 @@
+/* src/components/GridBackground/GridBackground.module.css */
+.grid {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: #080808;
+  background-image:
+    linear-gradient(rgba(102, 126, 234, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(102, 126, 234, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position:
+    calc(50% + var(--shift-x, 0px)) calc(50% + var(--shift-y, 0px));
+  transition: background-position 0.15s ease-out;
+  pointer-events: none;
+}
