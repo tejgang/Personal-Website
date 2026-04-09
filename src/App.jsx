@@ -1,4 +1,5 @@
-import AmbientBackground from './components/AmbientBackground/AmbientBackground'
+// src/App.jsx
+import GridBackground from './components/GridBackground/GridBackground'
 import Navbar from './components/Navbar/Navbar'
 import About from './components/sections/About/About'
 import Experience from './components/sections/Experience/Experience'
@@ -10,7 +11,7 @@ import Footer from './components/Footer/Footer'
 export default function App() {
   return (
     <>
-      <AmbientBackground />
+      <GridBackground />
       <Navbar />
       <main>
         <About />
