@@ -51,10 +51,24 @@
   width: 100%;
 }
 
+/* Email card wrapper — stacks card + copied message */
+.emailCardWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
 .contactLink {
   text-decoration: none;
   color: inherit;
   display: block;
+}
+
+.copiedMsg {
+  font-size: 0.7rem;
+  color: #0ea5e9;
+  text-align: center;
+  pointer-events: none;
 }
 
 .contactItem {
@@ -69,6 +83,13 @@
   white-space: nowrap;
   height: 100%;
   box-sizing: border-box;
+  /* reset button styles when used as <button> */
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
 }
 
 .contactLink:hover .contactItem,

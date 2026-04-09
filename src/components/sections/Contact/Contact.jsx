@@ -12,15 +12,25 @@ export default function Contact() {
   const [email, setEmail] = useState('')
   const [formOpen, setFormOpen] = useState(false)
   const [status, setStatus] = useState('idle') // idle | sending | sent | error
+  const [emailCopied, setEmailCopied] = useState(false)
   const timerRef = useRef(null)
+  const copyTimerRef = useRef(null)
   const formWrapperRef = useRef(null)
+
+  function handleCopyEmail() {
+    navigator.clipboard.writeText(email).then(() => {
+      setEmailCopied(true)
+      clearTimeout(copyTimerRef.current)
+      copyTimerRef.current = setTimeout(() => setEmailCopied(false), 2000)
+    })
+  }
 
   useEffect(() => {
     const user = String.fromCharCode(116,101,106,103,97,110,103,117,112,97,110,116,117,108,97)
     const domain = String.fromCharCode(103,109,97,105,108)
     const tld = String.fromCharCode(99,111,109)
     setEmail(`${user}@${domain}.${tld}`)
-    return () => clearTimeout(timerRef.current)
+    return () => { clearTimeout(timerRef.current); clearTimeout(copyTimerRef.current) }
   }, [])
 
   function resetStatusAfterDelay() {
@@ -68,14 +78,29 @@ export default function Contact() {
         >
           {/* Info cards — single row */}
           <div className={styles.contactCards}>
-            <div className={styles.contactItem}>
-              <div className={styles.contactIcon}>
-                <img src="/images/gmail-new.png" alt="Email" width={28} height={28} />
-              </div>
-              <div>
-                <strong>Email</strong>
-                <span>{email}</span>
-              </div>
+            <div className={styles.emailCardWrapper}>
+              <button className={styles.contactItem} onClick={handleCopyEmail}>
+                <div className={styles.contactIcon}>
+                  <img src="/images/gmail-new.png" alt="Email" width={28} height={28} />
+                </div>
+                <div>
+                  <strong>Email</strong>
+                  <span>{email}</span>
+                </div>
+              </button>
+              <AnimatePresence>
+                {emailCopied && (
+                  <motion.span
+                    className={styles.copiedMsg}
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -4 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    Copied!
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </div>
 
             <div className={styles.contactItem}>
