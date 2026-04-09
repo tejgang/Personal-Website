@@ -1,5 +1,5 @@
 // src/components/sections/Skills/SkillCategory.jsx
-import { memo, useRef } from 'react'
+import { memo, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import styles from './Skills.module.css'
 
@@ -16,12 +16,37 @@ function getPosition(index, total) {
   return {
     x: CENTER + cos * RADIUS,
     y: CENTER + sin * RADIUS,
-    // spoke starts at edge of center bubble, ends at edge of skill bubble
     startX: CENTER + cos * CENTER_BUBBLE_R,
     startY: CENTER + sin * CENTER_BUBBLE_R,
     endX: CENTER + cos * (RADIUS - SKILL_BUBBLE_R),
     endY: CENTER + sin * (RADIUS - SKILL_BUBBLE_R),
   }
+}
+
+// Separate component so each bubble tracks its own entry-complete state
+function SkillBubble({ skill, x, y, delay, inView }) {
+  const [entryDone, setEntryDone] = useState(false)
+
+  return (
+    <motion.div
+      className={styles.skillBubble}
+      style={{ left: x, top: y, x: '-50%', y: '-50%' }}
+      initial={{ opacity: 0, scale: 0 }}
+      animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
+      transition={entryDone
+        ? { type: 'spring', stiffness: 600, damping: 30 }
+        : { delay, type: 'spring', stiffness: 260, damping: 20, duration: 0.35 }
+      }
+      onAnimationComplete={() => { if (inView) setEntryDone(true) }}
+      whileHover={{
+        scale: 1.22,
+        transition: { type: 'spring', stiffness: 500, damping: 9 },
+      }}
+    >
+      <img src={skill.img} alt={skill.name} loading="lazy" className={styles.skillIcon} />
+      <span className={styles.skillLabel}>{skill.name}</span>
+    </motion.div>
+  )
 }
 
 const SkillWeb = memo(function SkillWeb({ category, index: categoryIndex }) {
@@ -70,32 +95,18 @@ const SkillWeb = memo(function SkillWeb({ category, index: categoryIndex }) {
         <span className={styles.centerLabel}>{category.title}</span>
       </motion.div>
 
-      {/* Skill bubbles — bouncy hover */}
+      {/* Skill bubbles */}
       {category.skills.map((skill, i) => {
         const { x, y } = getPosition(i, category.skills.length)
-
         return (
-          <motion.div
+          <SkillBubble
             key={skill.name}
-            className={styles.skillBubble}
-            style={{ left: x, top: y, x: '-50%', y: '-50%' }}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={inView ? { opacity: 1, scale: 1 } : {}}
-            transition={{
-              duration: 0.35,
-              delay: categoryIndex * 0.15 + 0.6 + i * 0.07,
-              type: 'spring',
-              stiffness: 260,
-              damping: 20,
-            }}
-            whileHover={{
-              scale: 1.22,
-              transition: { type: 'spring', stiffness: 500, damping: 9 },
-            }}
-          >
-            <img src={skill.img} alt={skill.name} loading="lazy" className={styles.skillIcon} />
-            <span className={styles.skillLabel}>{skill.name}</span>
-          </motion.div>
+            skill={skill}
+            x={x}
+            y={y}
+            delay={categoryIndex * 0.15 + 0.6 + i * 0.07}
+            inView={inView}
+          />
         )
       })}
     </div>
