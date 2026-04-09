@@ -37,47 +37,37 @@
 
 .contactContent {
   display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  gap: 2.5rem;
-}
-
-/* Info cards */
-.contactCards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-  min-width: 520px;
-}
-
-/* Button + form column */
-.contactRight {
-  display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-width: 160px;
+  gap: 1.5rem;
 }
 
-.contactRightOpen {
-  justify-content: flex-start;
+/* Info cards — single row */
+.contactCards {
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+  width: 100%;
 }
 
 .contactLink {
   text-decoration: none;
   color: inherit;
+  flex: 1;
   display: block;
 }
 
 .contactItem {
+  flex: 1;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
   padding: 0.75rem 1rem;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 6px;
   transition: border-color 0.2s, background 0.2s;
+  white-space: nowrap;
 }
 
 .contactLink:hover .contactItem,
@@ -115,7 +105,7 @@
   color: #888;
 }
 
-/* Toggle button */
+/* Toggle button — centered below cards */
 .toggleBtn {
   background: none;
   border: 1px solid rgba(14, 165, 233, 0.4);
@@ -126,7 +116,6 @@
   font-weight: 600;
   cursor: pointer;
   transition: background 0.2s, transform 0.2s;
-  margin-bottom: 0;
 }
 
 .toggleBtn:hover {
@@ -134,10 +123,9 @@
   transform: translateY(-1px);
 }
 
-/* Form */
+/* Form — full width of cards row */
 .formWrapper {
-  margin-top: 1rem;
-  width: 520px;
+  width: 100%;
 }
 
 .form {
@@ -209,17 +197,12 @@
   cursor: not-allowed;
 }
 
-@media (max-width: 700px) {
-  .contactContent {
+@media (max-width: 768px) {
+  .contactCards {
     flex-direction: column;
   }
 
-  .contactCards {
-    min-width: unset;
-    width: 100%;
-  }
-
-  .formWrapper {
-    width: 100%;
+  .contactLink {
+    flex: unset;
   }
 }
