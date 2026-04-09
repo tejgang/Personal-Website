@@ -97,21 +97,10 @@
   padding: 0 4px;
 }
 
-/* Individual skill bubbles — outer positioning wrapper */
+/* Individual skill bubbles — the circle IS the bubble, centered on the spoke endpoint */
 .skillBubble {
   position: absolute;
   transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  width: 60px;
-  z-index: 2;
-  cursor: default;
-}
-
-/* Inner circle bubble around the icon */
-.skillIconBubble {
   width: 48px;
   height: 48px;
   border-radius: 50%;
@@ -120,10 +109,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2;
+  cursor: default;
   transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
 }
 
-.skillBubble:hover .skillIconBubble {
+.skillBubble:hover {
   border-color: rgba(14, 165, 233, 0.75);
   background: linear-gradient(135deg, rgba(14, 165, 233, 0.28), rgba(118, 75, 162, 0.28));
   box-shadow: 0 0 14px rgba(14, 165, 233, 0.3);
@@ -141,12 +132,18 @@
   filter: brightness(1.25);
 }
 
+/* Label floats below the circle without affecting its centering */
 .skillLabel {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 0.55rem;
   color: #888;
   text-align: center;
   white-space: nowrap;
   transition: color 0.2s;
+  pointer-events: none;
 }
 
 .skillBubble:hover .skillLabel {

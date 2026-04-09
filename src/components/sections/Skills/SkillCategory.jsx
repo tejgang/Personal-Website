@@ -83,9 +83,7 @@ const SkillWeb = memo(function SkillWeb({ category, index: categoryIndex }) {
               transition: { type: 'spring', stiffness: 500, damping: 9 },
             }}
           >
-            <div className={styles.skillIconBubble}>
-              <img src={skill.img} alt={skill.name} loading="lazy" className={styles.skillIcon} />
-            </div>
+            <img src={skill.img} alt={skill.name} loading="lazy" className={styles.skillIcon} />
             <span className={styles.skillLabel}>{skill.name}</span>
           </motion.div>
         )
