@@ -18,6 +18,10 @@ export default function ExperienceItem({ exp, index, isExpanded, onToggle }) {
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
       viewport={{ once: true, margin: '-80px' }}
       onClick={onToggle}
+      onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && onToggle()}
+      role="button"
+      tabIndex={0}
+      aria-expanded={isExpanded}
       style={{ cursor: 'pointer' }}
     >
       <div className={styles.itemHeader}>

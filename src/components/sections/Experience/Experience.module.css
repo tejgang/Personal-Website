@@ -11,7 +11,7 @@
   left: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(180deg, #667eea, transparent);
+  background: linear-gradient(180deg, #0ea5e9, transparent);
 }
 
 .sectionHeader {
@@ -41,7 +41,7 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(180deg, #667eea, #764ba2);
+  background: linear-gradient(180deg, #0ea5e9, #0284c7);
 }
 
 /* EXPERIENCE CARD */
@@ -56,8 +56,8 @@
 }
 
 .experienceItem:hover {
-  border-color: rgba(102, 126, 234, 0.3);
-  background: rgba(102, 126, 234, 0.04);
+  border-color: rgba(14, 165, 233, 0.3);
+  background: rgba(14, 165, 233, 0.04);
 }
 
 /* Timeline dot */
@@ -69,7 +69,7 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #667eea;
+  background: #0ea5e9;
   border: 2px solid #080808;
 }
 
@@ -107,12 +107,12 @@
 
 .chevronOpen {
   transform: rotate(180deg);
-  color: #667eea;
+  color: #0ea5e9;
 }
 
 .experienceCompany {
   font-size: 0.85rem;
-  color: #667eea;
+  color: #0ea5e9;
   margin-bottom: 0.3rem;
   font-weight: 500;
 }

@@ -11,7 +11,7 @@
   left: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(180deg, #667eea, transparent);
+  background: linear-gradient(180deg, #0ea5e9, transparent);
 }
 
 .sectionHeader {
@@ -53,8 +53,8 @@
 
 .contactLink:hover .contactItem,
 .contactItem:hover {
-  border-color: rgba(102, 126, 234, 0.3);
-  background: rgba(102, 126, 234, 0.05);
+  border-color: rgba(14, 165, 233, 0.3);
+  background: rgba(14, 165, 233, 0.05);
 }
 
 .contactIcon {
@@ -89,8 +89,8 @@
 /* Toggle button */
 .toggleBtn {
   background: none;
-  border: 1px solid rgba(102, 126, 234, 0.4);
-  color: #667eea;
+  border: 1px solid rgba(14, 165, 233, 0.4);
+  color: #0ea5e9;
   padding: 0.6rem 1.25rem;
   border-radius: 4px;
   font-size: 0.85rem;
@@ -101,7 +101,7 @@
 }
 
 .toggleBtn:hover {
-  background: rgba(102, 126, 234, 0.1);
+  background: rgba(14, 165, 233, 0.1);
   transform: translateY(-1px);
 }
 
@@ -149,7 +149,7 @@
 .formInput:focus,
 .formTextarea:focus {
   outline: none;
-  border-color: rgba(102, 126, 234, 0.5);
+  border-color: rgba(14, 165, 233, 0.5);
 }
 
 .formTextarea {
@@ -157,7 +157,7 @@
 }
 
 .submitBtn {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
   color: #fff;
   border: none;
   border-radius: 4px;

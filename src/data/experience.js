@@ -9,7 +9,7 @@ export const experiences = [
     date: 'Jun 2025 - Present',
     location: 'Berkeley, CA',
     description:
-      'Building agentic AI tools and infrastructure. Working on model evaluation pipelines, tool-use frameworks, and developer-facing SDK features that help users deploy production AI agents.',
+      'Built agentic AI systems for healthcare operations using HIPAA-compliant APIs and GCP, reducing manual processing by ~70% and saving $20K+ per practice annually. Developing MCP servers in TypeScript with Docker and GCP Cloud Run to enable scalable, production-ready tool integrations.',
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ export const experiences = [
     date: 'Jul 2024 - Sep 2024',
     location: 'Davis, CA',
     description:
-      'Built predictive ML models to automate healthcare workflows and surface data-driven insights for clinical teams. Developed cloud data pipelines on GCP and integrated model outputs into existing care coordination software.',
+      'Built a clinical NLP pipeline using spaCy and LangChain to convert de-identified patient notes into structured JSON visit summaries, improving care plan evaluations by 30% and saving clinicians 4–5 hours weekly. Trained Random Forest models in scikit-learn to predict patient outcomes from structured visit data.',
   },
   {
     id: 3,

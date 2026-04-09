@@ -30,7 +30,7 @@ export function useScramble(text, trigger) {
           .join('')
       )
       settled++
-      if (settled > text.length) clearInterval(intervalRef.current)
+      if (settled >= text.length) clearInterval(intervalRef.current)
     }, msPerChar)
 
     return () => clearInterval(intervalRef.current)

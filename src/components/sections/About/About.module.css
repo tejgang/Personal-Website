@@ -14,7 +14,7 @@
   left: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(180deg, #667eea, transparent);
+  background: linear-gradient(180deg, #0ea5e9, transparent);
 }
 
 /* Two-column grid: text left, image right */
@@ -44,8 +44,8 @@
   left: -10px;
   width: 32px;
   height: 32px;
-  border-top: 2px solid #667eea;
-  border-left: 2px solid #667eea;
+  border-top: 2px solid #0ea5e9;
+  border-left: 2px solid #0ea5e9;
   pointer-events: none;
 }
 
@@ -56,8 +56,8 @@
   right: -10px;
   width: 32px;
   height: 32px;
-  border-bottom: 2px solid #764ba2;
-  border-right: 2px solid #764ba2;
+  border-bottom: 2px solid #0284c7;
+  border-right: 2px solid #0284c7;
   pointer-events: none;
 }
 
@@ -67,7 +67,7 @@
   max-width: 360px;
   height: auto;
   border-radius: 8px;
-  border: 1px solid rgba(102, 126, 234, 0.35);
+  border: 1px solid rgba(14, 165, 233, 0.35);
   object-fit: cover;
 }
 
@@ -82,7 +82,7 @@
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 3px;
-  color: #667eea;
+  color: #0ea5e9;
   margin: 0 0 0.5rem;
 }
 
@@ -109,7 +109,7 @@
 .divider {
   width: 40px;
   height: 2px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
+  background: linear-gradient(90deg, #0ea5e9, #0284c7);
   margin-bottom: 1rem;
 }
 
@@ -121,7 +121,7 @@
 }
 
 .cursor {
-  color: #667eea;
+  color: #0ea5e9;
   animation: blink 1s step-end infinite;
 }
 
@@ -164,7 +164,7 @@
 }
 
 .dot {
-  color: #667eea;
+  color: #0ea5e9;
 }
 
 .actions {
@@ -176,7 +176,7 @@
 .resumeBtn {
   display: inline-block;
   padding: 0.5rem 1.25rem;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
@@ -193,8 +193,8 @@
 .githubBtn {
   display: inline-block;
   padding: 0.5rem 1.25rem;
-  border: 1px solid rgba(102, 126, 234, 0.4);
-  color: #667eea;
+  border: 1px solid rgba(14, 165, 233, 0.4);
+  color: #0ea5e9;
   text-decoration: none;
   border-radius: 4px;
   font-size: 0.8rem;
@@ -203,7 +203,7 @@
 }
 
 .githubBtn:hover {
-  background: rgba(102, 126, 234, 0.1);
+  background: rgba(14, 165, 233, 0.1);
   transform: translateY(-2px);
 }
 

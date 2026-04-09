@@ -35,7 +35,7 @@ const SkillWeb = memo(function SkillWeb({ category, index: categoryIndex }) {
             <motion.path
               key={skill.name}
               d={`M ${CENTER} ${CENTER} L ${x} ${y}`}
-              stroke="rgba(102, 126, 234, 0.25)"
+              stroke="rgba(14, 165, 233, 0.25)"
               strokeWidth="1"
               fill="none"
               initial={{ pathLength: 0, opacity: 0 }}

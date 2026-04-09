@@ -78,7 +78,7 @@ export default function Contact() {
             </div>
 
             <div className={styles.contactItem}>
-              <div className={styles.contactIcon}>📍</div>
+              <div className={styles.contactIcon} aria-hidden="true">📍</div>
               <div>
                 <strong>Location</strong>
                 <span>Santa Barbara, CA</span>
@@ -147,6 +147,8 @@ export default function Contact() {
                 style={{ overflow: 'hidden' }}
               >
                 <form className={styles.form} onSubmit={handleSubmit}>
+                  {/* Honeypot for spam bots */}
+                  <input type="text" name="_gotcha" style={{ display: 'none' }} aria-hidden="true" tabIndex={-1} />
                   <div className={styles.formRow}>
                     <label htmlFor="contact-name" className={styles.formLabel}>Name</label>
                     <input

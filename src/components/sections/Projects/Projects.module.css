@@ -28,7 +28,7 @@
   transform: translateX(-50%);
   width: 80px;
   height: 4px;
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background: linear-gradient(45deg, #0ea5e9, #0284c7);
   border-radius: 2px;
 }
 
@@ -61,7 +61,7 @@
 /* Image area with emoji + hover reveal */
 .projectImage {
   height: 200px;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -115,7 +115,7 @@
 }
 
 .techTag {
-  background: #667eea;
+  background: #0ea5e9;
   color: white;
   padding: 0.3rem 0.8rem;
   border-radius: 20px;
@@ -129,7 +129,7 @@
 }
 
 .projectLink {
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background: linear-gradient(45deg, #0ea5e9, #0284c7);
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 25px;
@@ -140,7 +140,7 @@
 
 .projectLink:hover {
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 5px 15px rgba(14, 165, 233, 0.3);
 }
 
 .techStrip {
@@ -164,10 +164,10 @@
 .techTag {
   font-size: 0.65rem;
   padding: 0.15rem 0.5rem;
-  background: rgba(102, 126, 234, 0.15);
-  border: 1px solid rgba(102, 126, 234, 0.3);
+  background: rgba(14, 165, 233, 0.15);
+  border: 1px solid rgba(14, 165, 233, 0.3);
   border-radius: 3px;
-  color: #667eea;
+  color: #0ea5e9;
   font-weight: 500;
 }
 

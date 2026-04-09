@@ -17,7 +17,6 @@ export default defineConfig({
       output: {
         manualChunks: {
           'framer-motion': ['framer-motion'],
-          'emailjs':       ['@emailjs/browser'],
         },
       },
     },
