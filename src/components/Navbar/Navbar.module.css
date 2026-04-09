@@ -6,7 +6,7 @@
   width: 100%;
   top: 0;
   z-index: 1000;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
   opacity: 0;
   transform: translateY(-100%);
   animation: popDown 0.8s ease-out forwards;

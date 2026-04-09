@@ -1,5 +1,5 @@
 // src/components/sections/About/About.jsx
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useTypewriter } from '../../../hooks/useTypewriter'
 import { useScramble } from '../../../hooks/useScramble'
@@ -15,6 +15,9 @@ export default function About() {
   const [prevIdx, setPrevIdx] = useState(null)
   const [direction, setDirection] = useState('next')
   const animTimerRef = useRef(null)
+  useEffect(() => {
+    return () => clearTimeout(animTimerRef.current)
+  }, [])
   const photos = [
     { src: '/images/IMG_8674.png', alt: 'Tej Gangupantula' },
     { src: '/images/cat-gray.jpg', alt: 'Billu' },
@@ -31,7 +34,7 @@ export default function About() {
   function nextPhoto() { goTo((photoIdx + 1) % photos.length, 'next') }
 
   return (
-    <section id="about" className={styles.hero} ref={sectionRef}>
+    <section id="about" className={styles.hero} ref={sectionRef} aria-labelledby="about-heading">
       <div className="container">
         <div className={styles.heroContent}>
 
@@ -45,7 +48,7 @@ export default function About() {
           >
             <p className={styles.label}>Hi, I'm</p>
 
-            <h1 className={styles.name}>
+            <h1 id="about-heading" className={styles.name}>
               <span className={styles.nameSolid}>
                 {nameDisplayed}{!nameDone && <span className={styles.cursor}>|</span>}
               </span>
@@ -126,7 +129,7 @@ export default function About() {
                     key={i}
                     className={`${styles.carouselDot} ${i === photoIdx ? styles.activeDot : ''}`}
                     onClick={() => goTo(i, i > photoIdx ? 'next' : 'prev')}
-                    aria-label={`Photo ${i + 1}`}
+                    aria-label={photos[i].alt}
                   />
                 ))}
                 <button className={styles.carouselBtn} onClick={nextPhoto} aria-label="Next photo">›</button>

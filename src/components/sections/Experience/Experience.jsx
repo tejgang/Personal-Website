@@ -12,9 +12,9 @@ export default function Experience() {
   const scrambledTitle = useScramble('Experience', titleInView)
 
   return (
-    <section id="experience" className={styles.section}>
+    <section id="experience" className={styles.section} aria-labelledby="experience-heading">
       <div className="container">
-        <h2 ref={titleRef} className={styles.sectionHeader}>
+        <h2 id="experience-heading" ref={titleRef} className={styles.sectionHeader}>
           {scrambledTitle}
         </h2>
 

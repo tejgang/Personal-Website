@@ -5,9 +5,10 @@ import styles from './Projects.module.css'
 
 export default function Projects() {
   return (
-    <section id="projects" className={styles.section}>
+    <section id="projects" className={styles.section} aria-labelledby="projects-heading">
       <div className="container">
         <motion.h2
+          id="projects-heading"
           className={styles.sectionHeader}
           initial={{ opacity: 0, y: 50, scale: 0.9 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}

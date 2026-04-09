@@ -22,6 +22,8 @@ export default function Contact() {
       setEmailCopied(true)
       clearTimeout(copyTimerRef.current)
       copyTimerRef.current = setTimeout(() => setEmailCopied(false), 2000)
+    }).catch(() => {
+      window.location.href = `mailto:${email}`
     })
   }
 
@@ -63,9 +65,9 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className={styles.section}>
+    <section id="contact" className={styles.section} aria-labelledby="contact-heading">
       <div className="container">
-        <h2 ref={titleRef} className={styles.sectionHeader}>
+        <h2 ref={titleRef} id="contact-heading" className={styles.sectionHeader}>
           {scrambledTitle}
         </h2>
 
@@ -190,6 +192,7 @@ export default function Contact() {
                       name="name"
                       type="text"
                       required
+                      autoComplete="name"
                       className={styles.formInput}
                       placeholder="Your name"
                     />
@@ -201,6 +204,7 @@ export default function Contact() {
                       name="email"
                       type="email"
                       required
+                      autoComplete="email"
                       className={styles.formInput}
                       placeholder="your@email.com"
                     />
@@ -212,6 +216,7 @@ export default function Contact() {
                       name="message"
                       required
                       rows={4}
+                      autoComplete="off"
                       className={styles.formTextarea}
                       placeholder="What's on your mind?"
                     />

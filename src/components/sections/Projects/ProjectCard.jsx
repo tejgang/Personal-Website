@@ -15,57 +15,62 @@ const ProjectCard = memo(function ProjectCard({ project, index }) {
   }
 
   function handleMouseLeave() {
-    cardRef.current.style.transform =
-      'perspective(1000px) rotateY(0deg) rotateX(0deg)'
+    if (cardRef.current) {
+      cardRef.current.style.transform =
+        'perspective(1000px) rotateY(0deg) rotateX(0deg)'
+    }
   }
 
   return (
-    <motion.div
+    <div
       ref={cardRef}
-      className={styles.projectCard}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: 0.6,
-        delay: index * 0.15,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      }}
-      viewport={{ once: true, margin: '-50px' }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <div className={styles.projectImage}>
-        <div className={styles.projectEmoji}>{project.emoji}</div>
-        <img
-          src={project.image}
-          alt={project.title}
-          className={styles.projectHoverImage}
-          loading="lazy"
-          width={350}
-          height={200}
-        />
-      </div>
-
-      <div className={styles.projectContent}>
-        <h3 className={styles.projectTitle}>{project.title}</h3>
-        <p className={styles.projectDescription}>{project.description}</p>
-
-        <div className={styles.projectLinks}>
-          {project.links.map(link => (
-            <a
-              key={link.label}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.projectLink}
-            >
-              {link.label}
-            </a>
-          ))}
+      <motion.div
+        className={styles.projectCard}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.6,
+          delay: index * 0.15,
+          ease: [0.25, 0.46, 0.45, 0.94],
+        }}
+        viewport={{ once: true, margin: '-50px' }}
+      >
+        <div className={styles.projectImage}>
+          <div className={styles.projectEmoji}>{project.emoji}</div>
+          <img
+            src={project.image}
+            alt={project.title}
+            className={styles.projectHoverImage}
+            loading="lazy"
+            width={350}
+            height={200}
+          />
         </div>
-      </div>
 
-    </motion.div>
+        <div className={styles.projectContent}>
+          <h3 className={styles.projectTitle}>{project.title}</h3>
+          <p className={styles.projectDescription}>{project.description}</p>
+
+          <div className={styles.projectLinks}>
+            {project.links.map(link => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.projectLink}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
+
+      </motion.div>
+    </div>
   )
 })
 

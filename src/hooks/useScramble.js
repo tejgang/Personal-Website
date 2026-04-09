@@ -18,7 +18,7 @@ export function useScramble(text, trigger) {
 
     clearInterval(intervalRef.current)
 
-    intervalRef.current = setInterval(() => {
+    const id = setInterval(() => {
       setDisplayed(
         text
           .split('')
@@ -32,11 +32,12 @@ export function useScramble(text, trigger) {
       settled++
       if (settled >= text.length) {
         setDisplayed(text)
-        clearInterval(intervalRef.current)
+        clearInterval(id)
       }
     }, msPerChar)
+    intervalRef.current = id
 
-    return () => clearInterval(intervalRef.current)
+    return () => clearInterval(id)
   }, [trigger, text])
 
   return displayed

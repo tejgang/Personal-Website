@@ -12,9 +12,9 @@ export default function Skills() {
   const scrambledTitle = useScramble('Technical Skills', titleInView)
 
   return (
-    <section id="skills" className={styles.section}>
+    <section id="skills" className={styles.section} aria-labelledby="skills-heading">
       <div className="container">
-        <h2 ref={titleRef} className={styles.sectionHeader}>
+        <h2 id="skills-heading" ref={titleRef} className={styles.sectionHeader}>
           {scrambledTitle}
         </h2>
         <div className={styles.skillsGrid}>
