@@ -1,19 +1,38 @@
-import { memo } from 'react'
+// src/components/sections/Projects/ProjectCard.jsx
+import { memo, useRef } from 'react'
 import { motion } from 'framer-motion'
 import styles from './Projects.module.css'
 
 const ProjectCard = memo(function ProjectCard({ project, index }) {
+  const cardRef = useRef(null)
+
+  function handleMouseMove(e) {
+    const card = cardRef.current
+    const rect = card.getBoundingClientRect()
+    const x = (e.clientX - rect.left) / rect.width - 0.5
+    const y = (e.clientY - rect.top) / rect.height - 0.5
+    card.style.transform = `perspective(1000px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`
+  }
+
+  function handleMouseLeave() {
+    cardRef.current.style.transform =
+      'perspective(1000px) rotateY(0deg) rotateX(0deg)'
+  }
+
   return (
     <motion.div
+      ref={cardRef}
       className={styles.projectCard}
-      initial={{ opacity: 0, scale: 0.9, y: 30 }}
-      whileInView={{ opacity: 1, scale: 1, y: 0 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
       transition={{
-        duration: 0.8,
-        delay: index * 0.2,
+        duration: 0.6,
+        delay: index * 0.15,
         ease: [0.25, 0.46, 0.45, 0.94],
       }}
       viewport={{ once: true, margin: '-50px' }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
       <div className={styles.projectImage}>
         <div className={styles.projectEmoji}>{project.emoji}</div>
@@ -26,14 +45,11 @@ const ProjectCard = memo(function ProjectCard({ project, index }) {
           height={200}
         />
       </div>
+
       <div className={styles.projectContent}>
         <h3 className={styles.projectTitle}>{project.title}</h3>
         <p className={styles.projectDescription}>{project.description}</p>
-        <div className={styles.projectTech}>
-          {project.tags.map(tag => (
-            <span key={tag} className={styles.techTag}>{tag}</span>
-          ))}
-        </div>
+
         <div className={styles.projectLinks}>
           {project.links.map(link => (
             <a
@@ -47,6 +63,13 @@ const ProjectCard = memo(function ProjectCard({ project, index }) {
             </a>
           ))}
         </div>
+      </div>
+
+      {/* Tech strip — revealed on hover */}
+      <div className={styles.techStrip}>
+        {project.tags.map(tag => (
+          <span key={tag} className={styles.techTag}>{tag}</span>
+        ))}
       </div>
     </motion.div>
   )
