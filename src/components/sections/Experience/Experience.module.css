@@ -39,7 +39,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  align-items: start;
+  align-items: center;
 }
 
 /* TIMELINE */
@@ -156,27 +156,18 @@
   margin: 0;
 }
 
-/* Invisible right-column placeholder — reserves grid space for measurement */
-.imagePlaceholder {
-  min-height: 1px;
+/* IMAGE COLUMN */
+.imageColumn {
+  display: flex;
+  justify-content: center;
 }
 
-/* SIDE IMAGE — fixed to viewport, horizontally pinned to the right grid column */
-.experienceImage {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  /* left and width injected via inline style from JS measurement */
-  pointer-events: none;
-}
-
-.imageWrapper {
+.photoWrapper {
   position: relative;
   display: inline-block;
-  width: 100%;
 }
 
-.imageWrapper::before {
+.photoWrapper::before {
   content: '';
   position: absolute;
   top: -10px;
@@ -186,10 +177,9 @@
   border-top: 2px solid #0ea5e9;
   border-left: 2px solid #0ea5e9;
   pointer-events: none;
-  z-index: 1;
 }
 
-.imageWrapper::after {
+.photoWrapper::after {
   content: '';
   position: absolute;
   bottom: -10px;
@@ -199,14 +189,14 @@
   border-bottom: 2px solid #0284c7;
   border-right: 2px solid #0284c7;
   pointer-events: none;
-  z-index: 1;
 }
 
 .campusImage {
   display: block;
   width: 100%;
+  max-width: 440px;
   height: auto;
-  border-radius: 6px;
+  border-radius: 8px;
   border: 1px solid rgba(14, 165, 233, 0.35);
   object-fit: cover;
 }
@@ -231,11 +221,7 @@
     grid-template-columns: 1fr;
   }
 
-  .imagePlaceholder {
-    display: none;
-  }
-
-  .experienceImage {
+  .imageColumn {
     display: none;
   }
 }
