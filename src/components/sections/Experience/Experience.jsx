@@ -1,6 +1,6 @@
 // src/components/sections/Experience/Experience.jsx
 import { useRef, useState } from 'react'
-import { motion, useScroll, useTransform, useInView } from 'framer-motion'
+import { motion, useScroll, useTransform, useInView, useMotionValue, useMotionValueEvent } from 'framer-motion'
 import { useScramble } from '../../../hooks/useScramble'
 import { experiences } from '../../../data/experience'
 import ExperienceItem from './ExperienceItem'
@@ -18,7 +18,11 @@ export default function Experience() {
     target: sectionRef,
     offset: ['start end', 'end start'],
   })
-  const lineScaleY = useTransform(scrollYProgress, [0.1, 0.75], [0, 1])
+  const lineScaleY = useMotionValue(0)
+  useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    const mapped = Math.max(0, Math.min(1, (latest - 0.1) / (0.75 - 0.1)))
+    if (mapped > lineScaleY.get()) lineScaleY.set(mapped)
+  })
 
   function handleToggle(id) {
     setExpandedId(prev => (prev === id ? null : id))
@@ -55,14 +59,16 @@ export default function Experience() {
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true, margin: '-50px' }}
           >
-            <img
-              src="/images/aerial-view-ocean-front.jpg"
-              alt="Aerial ocean view"
-              className={styles.campusImage}
-              loading="lazy"
-              width={600}
-              height={600}
-            />
+            <div className={styles.imageWrapper}>
+              <img
+                src="/images/aerial-view-ocean-front.jpg"
+                alt="Aerial ocean view"
+                className={styles.campusImage}
+                loading="lazy"
+                width={600}
+                height={600}
+              />
+            </div>
           </motion.div>
         </div>
       </div>

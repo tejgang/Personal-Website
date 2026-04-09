@@ -20,6 +20,19 @@
   color: #fff;
   margin-bottom: 3rem;
   letter-spacing: -0.5px;
+  position: relative;
+  display: inline-block;
+}
+
+.sectionHeader::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #0ea5e9, #0284c7);
+  border-radius: 2px;
 }
 
 .experienceWrapper {
@@ -37,7 +50,7 @@
 
 .timelineLine {
   position: absolute;
-  left: 0;
+  left: -1px;
   top: 0;
   bottom: 0;
   width: 2px;
@@ -146,14 +159,65 @@
 .experienceImage {
   position: sticky;
   top: 6rem;
+  align-self: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageWrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.imageWrapper::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 32px;
+  height: 32px;
+  border-top: 2px solid #0ea5e9;
+  border-left: 2px solid #0ea5e9;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.imageWrapper::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  width: 32px;
+  height: 32px;
+  border-bottom: 2px solid #0284c7;
+  border-right: 2px solid #0284c7;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .campusImage {
+  display: block;
   width: 100%;
   height: auto;
   border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(14, 165, 233, 0.35);
   object-fit: cover;
+}
+
+/* Company link hover */
+.companyLink {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s, background 0.2s;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+.companyLink:hover {
+  color: #38bdf8;
+  background: rgba(14, 165, 233, 0.12);
 }
 
 /* Responsive */

@@ -39,7 +39,7 @@ export default function ExperienceItem({ exp, index, isExpanded, onToggle }) {
             target="_blank"
             rel="noopener noreferrer"
             onClick={e => e.stopPropagation()}
-            style={{ color: 'inherit', textDecoration: 'none' }}
+            className={styles.companyLink}
           >
             {scrambledCompany}
           </a>

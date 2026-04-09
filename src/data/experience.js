@@ -28,7 +28,7 @@ export const experiences = [
     company: 'UC Santa Barbara Campus Concessions',
     url: 'https://dining.ucsb.edu/campus-concessions',
     logo: '/images/ucsb.png',
-    date: 'Feb 2024 - Present',
+    date: 'Feb 2024 - Jan 2026',
     location: 'Santa Barbara, CA',
     description:
       'Managed point-of-sale operations and customer service at UCSB sporting events and campus venues. Coordinated with team leads on inventory and staffing logistics.',
