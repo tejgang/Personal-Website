@@ -39,7 +39,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  align-items: stretch;
+  align-items: start;
 }
 
 /* TIMELINE */
@@ -156,14 +156,18 @@
   margin: 0;
 }
 
-/* SIDE IMAGE */
+/* Invisible right-column placeholder — reserves grid space for measurement */
+.imagePlaceholder {
+  min-height: 1px;
+}
+
+/* SIDE IMAGE — fixed to viewport, horizontally pinned to the right grid column */
 .experienceImage {
-  position: sticky;
-  top: 6rem;
-  height: fit-content;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  /* left and width injected via inline style from JS measurement */
+  pointer-events: none;
 }
 
 .imageWrapper {
@@ -225,6 +229,10 @@
 @media (max-width: 900px) {
   .experienceWrapper {
     grid-template-columns: 1fr;
+  }
+
+  .imagePlaceholder {
+    display: none;
   }
 
   .experienceImage {

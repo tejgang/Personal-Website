@@ -1,6 +1,6 @@
 // src/components/sections/Experience/Experience.jsx
-import { useRef, useState } from 'react'
-import { motion, useScroll, useTransform, useInView, useMotionValue, useMotionValueEvent } from 'framer-motion'
+import { useRef, useState, useEffect } from 'react'
+import { motion, useScroll, useInView, useMotionValue, useMotionValueEvent } from 'framer-motion'
 import { useScramble } from '../../../hooks/useScramble'
 import { experiences } from '../../../data/experience'
 import ExperienceItem from './ExperienceItem'
@@ -9,10 +9,12 @@ import styles from './Experience.module.css'
 export default function Experience() {
   const sectionRef = useRef(null)
   const titleRef = useRef(null)
-  const lineRef = useRef(null)
+  const placeholderRef = useRef(null)
   const titleInView = useInView(titleRef, { once: true })
+  const sectionInView = useInView(sectionRef, { margin: '-10% 0px' })
   const scrambledTitle = useScramble('Experience', titleInView)
   const [expandedId, setExpandedId] = useState(null)
+  const [imgPos, setImgPos] = useState(null)
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -23,6 +25,20 @@ export default function Experience() {
     const mapped = Math.max(0, Math.min(1, (latest - 0.1) / (0.75 - 0.1)))
     if (mapped > lineScaleY.get()) lineScaleY.set(mapped)
   })
+
+  // Measure the placeholder's position so we can pin the image there with position:fixed
+  useEffect(() => {
+    function measure() {
+      if (!placeholderRef.current) return
+      const r = placeholderRef.current.getBoundingClientRect()
+      setImgPos({ left: r.left, width: r.width })
+    }
+    measure()
+    const ro = new ResizeObserver(measure)
+    if (placeholderRef.current) ro.observe(placeholderRef.current)
+    window.addEventListener('resize', measure)
+    return () => { ro.disconnect(); window.removeEventListener('resize', measure) }
+  }, [])
 
   function handleToggle(id) {
     setExpandedId(prev => (prev === id ? null : id))
@@ -52,26 +68,32 @@ export default function Experience() {
             ))}
           </div>
 
-          <motion.div
-            className={styles.experienceImage}
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true, margin: '-50px' }}
-          >
-            <div className={styles.imageWrapper}>
-              <img
-                src="/images/aerial-view-ocean-front.jpg"
-                alt="Aerial ocean view"
-                className={styles.campusImage}
-                loading="lazy"
-                width={600}
-                height={600}
-              />
-            </div>
-          </motion.div>
+          {/* Invisible placeholder reserves the right grid column for measurement */}
+          <div ref={placeholderRef} className={styles.imagePlaceholder} />
         </div>
       </div>
+
+      {/* Fixed image — pinned to the right column position, centered in viewport */}
+      {imgPos && (
+        <motion.div
+          className={styles.experienceImage}
+          style={{ left: imgPos.left, width: imgPos.width }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: sectionInView ? 1 : 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className={styles.imageWrapper}>
+            <img
+              src="/images/aerial-view-ocean-front.jpg"
+              alt="Aerial ocean view"
+              className={styles.campusImage}
+              loading="lazy"
+              width={600}
+              height={600}
+            />
+          </div>
+        </motion.div>
+      )}
     </section>
   )
 }
