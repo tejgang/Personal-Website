@@ -3,9 +3,9 @@ import { memo, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import styles from './Skills.module.css'
 
-const SIZE = 300        // container px
-const CENTER = SIZE / 2
-const RADIUS = 108      // distance from center to skill bubbles
+const SIZE = 360        // container px
+const CENTER = SIZE / 2  // 180
+const RADIUS = 130       // distance from center to skill bubbles
 
 function getPosition(index, total) {
   const angle = (2 * Math.PI / total) * index - Math.PI / 2
@@ -49,7 +49,7 @@ const SkillWeb = memo(function SkillWeb({ category, index: categoryIndex }) {
         })}
       </svg>
 
-      {/* Center bubble */}
+      {/* Center bubble — CSS hover only, no bounce */}
       <motion.div
         className={styles.centerBubble}
         style={{ left: CENTER, top: CENTER }}
@@ -61,7 +61,7 @@ const SkillWeb = memo(function SkillWeb({ category, index: categoryIndex }) {
         <span className={styles.centerLabel}>{category.title}</span>
       </motion.div>
 
-      {/* Skill bubbles */}
+      {/* Skill bubbles — bouncy hover */}
       {category.skills.map((skill, i) => {
         const { x, y } = getPosition(i, category.skills.length)
         return (
@@ -78,9 +78,14 @@ const SkillWeb = memo(function SkillWeb({ category, index: categoryIndex }) {
               stiffness: 260,
               damping: 20,
             }}
-            whileHover={{ scale: 1.18 }}
+            whileHover={{
+              scale: 1.22,
+              transition: { type: 'spring', stiffness: 500, damping: 9 },
+            }}
           >
-            <img src={skill.img} alt={skill.name} loading="lazy" className={styles.skillIcon} />
+            <div className={styles.skillIconBubble}>
+              <img src={skill.img} alt={skill.name} loading="lazy" className={styles.skillIcon} />
+            </div>
             <span className={styles.skillLabel}>{skill.name}</span>
           </motion.div>
         )
