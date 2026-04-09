@@ -1,5 +1,5 @@
 // src/components/sections/About/About.jsx
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useTypewriter } from '../../../hooks/useTypewriter'
 import { useScramble } from '../../../hooks/useScramble'
@@ -9,7 +9,16 @@ export default function About() {
   const sectionRef = useRef(null)
   const sectionInView = useInView(sectionRef, { once: true, margin: '-50px' })
   const scrambledTitle = useScramble('About Me', sectionInView)
-  const { displayed, done } = useTypewriter('Data Scientist & ML Engineer', 2000, 80)
+  const { displayed: nameDisplayed, done: nameDone } = useTypewriter('Tej Gangupantula', 500, 80)
+
+  const [photoIdx, setPhotoIdx] = useState(0)
+  const photos = [
+    { src: '/images/IMG_8674.png', alt: 'Tej Gangupantula' },
+    { src: '/images/cat-gray.jpg', alt: 'Billu' },
+    { src: '/images/cat-tabby.jpg', alt: 'Sheru' },
+  ]
+  function prevPhoto() { setPhotoIdx(i => (i - 1 + photos.length) % photos.length) }
+  function nextPhoto() { setPhotoIdx(i => (i + 1) % photos.length) }
 
   return (
     <section id="about" className={styles.hero} ref={sectionRef}>
@@ -27,16 +36,19 @@ export default function About() {
             <p className={styles.label}>Hi, I'm</p>
 
             <h1 className={styles.name}>
-              <span className={styles.nameSolid}>Tej</span>
-              <span className={styles.nameGhost}>Gangupantula</span>
+              {nameDone ? (
+                <>
+                  <span className={styles.nameSolid}>Tej</span>
+                  <span className={styles.nameGhost}>Gangupantula</span>
+                </>
+              ) : (
+                <span className={styles.nameSolid}>
+                  {nameDisplayed}<span className={styles.cursor}>|</span>
+                </span>
+              )}
             </h1>
 
             <div className={styles.divider} />
-
-            <p className={styles.typewriterLine}>
-              {displayed}
-              {!done && <span className={styles.cursor}>|</span>}
-            </p>
 
             <p className={styles.sectionLabel} aria-hidden="true">{scrambledTitle}</p>
 
@@ -48,22 +60,15 @@ export default function About() {
               </p>
               <p>
                 My path into AI started with curiosity about how data reveals patterns and drives
-                decisions. I've since applied this passion through internships where I built agentic
-                AI applications, cloud pipelines, and predictive models that automated healthcare
-                workflows and supported clinicians with data-driven insights.
+                decisions. I'm currently an AI Engineer intern at Agentman, building healthcare
+                automation systems using agentic AI, GCP, and LLM-powered tools. I've also built
+                clinical NLP pipelines and predictive models that automated workflows and gave
+                clinicians data-driven insights.
               </p>
               <p>
-                When I'm not building or learning, I enjoy cooking for my family and friends,
-                working out, and spending quality time with my loved ones.
+                When I'm not building or learning, I enjoy cooking for myself and others, traveling,
+                spending quality time with loved ones, and playing with my two cats, Billu and Sheru.
               </p>
-            </div>
-
-            <div className={styles.statsRow}>
-              <span>4 Roles</span>
-              <span className={styles.dot}>·</span>
-              <span>25+ Skills</span>
-              <span className={styles.dot}>·</span>
-              <span>UCSB</span>
             </div>
 
             <div className={styles.actions}>
@@ -95,14 +100,28 @@ export default function About() {
             viewport={{ once: true, margin: '-50px' }}
           >
             <div className={styles.photoWrapper}>
-              <img
-                src="/images/IMG_8674.png"
-                alt="Tej Gangupantula"
-                className={styles.profileImg}
-                loading="eager"
-                width={400}
-                height={550}
-              />
+              <div className={styles.carouselWrapper}>
+                <img
+                  src={photos[photoIdx].src}
+                  alt={photos[photoIdx].alt}
+                  className={styles.profileImg}
+                  loading="eager"
+                  width={400}
+                  height={550}
+                />
+              </div>
+              <div className={styles.carouselControls}>
+                <button className={styles.carouselBtn} onClick={prevPhoto} aria-label="Previous photo">‹</button>
+                {photos.map((_, i) => (
+                  <button
+                    key={i}
+                    className={`${styles.carouselDot} ${i === photoIdx ? styles.activeDot : ''}`}
+                    onClick={() => setPhotoIdx(i)}
+                    aria-label={`Photo ${i + 1}`}
+                  />
+                ))}
+                <button className={styles.carouselBtn} onClick={nextPhoto} aria-label="Next photo">›</button>
+              </div>
             </div>
           </motion.div>
 
