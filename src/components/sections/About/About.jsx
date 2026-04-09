@@ -1,6 +1,6 @@
 // src/components/sections/About/About.jsx
 import { useRef, useState } from 'react'
-import { motion, AnimatePresence, useInView } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 import { useTypewriter } from '../../../hooks/useTypewriter'
 import { useScramble } from '../../../hooks/useScramble'
 import styles from './About.module.css'
@@ -94,21 +94,22 @@ export default function About() {
           >
             <div className={styles.photoWrapper}>
               <div className={styles.carouselWrapper}>
-                <AnimatePresence mode="wait">
-                  <motion.img
-                    key={photoIdx}
-                    src={photos[photoIdx].src}
-                    alt={photos[photoIdx].alt}
-                    className={styles.profileImg}
-                    loading="eager"
-                    width={400}
-                    height={550}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
-                  />
-                </AnimatePresence>
+                <div
+                  className={styles.carouselTrack}
+                  style={{ transform: `translateX(-${photoIdx * 100}%)` }}
+                >
+                  {photos.map((photo, i) => (
+                    <img
+                      key={i}
+                      src={photo.src}
+                      alt={photo.alt}
+                      className={styles.profileImg}
+                      loading={i === 0 ? 'eager' : 'lazy'}
+                      width={400}
+                      height={550}
+                    />
+                  ))}
+                </div>
               </div>
               <div className={styles.carouselControls}>
                 <button className={styles.carouselBtn} onClick={prevPhoto} aria-label="Previous photo">‹</button>
