@@ -210,15 +210,39 @@
 /* Carousel */
 .carouselWrapper {
   position: relative;
-}
-
-@keyframes carouselFade {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 400 / 550;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid rgba(14, 165, 233, 0.35);
 }
 
 .carouselWrapper .profileImg {
-  animation: carouselFade 0.35s ease;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  border-radius: 0;
+  border: none;
+}
+
+@keyframes slideInFromRight {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes slideInFromLeft {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+
+.slideNext {
+  animation: slideInFromRight 0.35s ease;
+}
+
+.slidePrev {
+  animation: slideInFromLeft 0.35s ease;
 }
 
 .carouselControls {

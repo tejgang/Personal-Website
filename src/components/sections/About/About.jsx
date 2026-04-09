@@ -12,13 +12,20 @@ export default function About() {
   const { displayed: nameDisplayed, done: nameDone } = useTypewriter('Tej Gangupantula', 500, 80)
 
   const [photoIdx, setPhotoIdx] = useState(0)
+  const [direction, setDirection] = useState('next')
   const photos = [
     { src: '/images/IMG_8674.png', alt: 'Tej Gangupantula' },
     { src: '/images/cat-gray.jpg', alt: 'Billu' },
     { src: '/images/cat-tabby.jpg', alt: 'Sheru' },
   ]
-  function prevPhoto() { setPhotoIdx(i => (i - 1 + photos.length) % photos.length) }
-  function nextPhoto() { setPhotoIdx(i => (i + 1) % photos.length) }
+  function prevPhoto() {
+    setDirection('prev')
+    setPhotoIdx(i => (i - 1 + photos.length) % photos.length)
+  }
+  function nextPhoto() {
+    setDirection('next')
+    setPhotoIdx(i => (i + 1) % photos.length)
+  }
 
   return (
     <section id="about" className={styles.hero} ref={sectionRef}>
@@ -98,7 +105,7 @@ export default function About() {
                   key={photoIdx}
                   src={photos[photoIdx].src}
                   alt={photos[photoIdx].alt}
-                  className={styles.profileImg}
+                  className={`${styles.profileImg} ${direction === 'next' ? styles.slideNext : styles.slidePrev}`}
                   loading="eager"
                   width={400}
                   height={550}
@@ -110,7 +117,7 @@ export default function About() {
                   <button
                     key={i}
                     className={`${styles.carouselDot} ${i === photoIdx ? styles.activeDot : ''}`}
-                    onClick={() => setPhotoIdx(i)}
+                    onClick={() => { setDirection(i > photoIdx ? 'next' : 'prev'); setPhotoIdx(i) }}
                     aria-label={`Photo ${i + 1}`}
                   />
                 ))}
