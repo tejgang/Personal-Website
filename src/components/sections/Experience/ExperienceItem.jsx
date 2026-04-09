@@ -9,6 +9,9 @@ export default function ExperienceItem({ exp, index }) {
   const inView = useInView(ref, { once: true })
   const scrambledCompany = useScramble(exp.company, inView)
 
+  // Dot appears just after the card finishes animating in
+  const dotDelay = index * 0.1 + 0.65
+
   return (
     <motion.div
       ref={ref}
@@ -18,6 +21,14 @@ export default function ExperienceItem({ exp, index }) {
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
       viewport={{ once: true, margin: '-80px' }}
     >
+      <motion.div
+        className={styles.timelineDot}
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.25, delay: dotDelay, ease: 'easeOut' }}
+        viewport={{ once: true, margin: '-80px' }}
+      />
+
       <div className={styles.itemHeader}>
         <div className={styles.experienceTitle}>
           <img src={exp.logo} alt={exp.company} className={styles.companyLogo} loading="lazy" />

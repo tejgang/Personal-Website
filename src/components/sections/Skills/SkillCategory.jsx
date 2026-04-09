@@ -6,7 +6,7 @@ import styles from './Skills.module.css'
 const SIZE = 420        // container px
 const CENTER = SIZE / 2  // 210
 const RADIUS = 155       // distance from center to skill bubble centers
-const CENTER_BUBBLE_R = 40  // half of 80px center bubble
+const CENTER_BUBBLE_R = 48  // half of 96px center bubble
 const SKILL_BUBBLE_R = 24   // half of 48px skill bubble
 
 function getPosition(index, total) {

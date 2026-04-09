@@ -11,7 +11,7 @@ const ProjectCard = memo(function ProjectCard({ project, index }) {
     const rect = card.getBoundingClientRect()
     const x = (e.clientX - rect.left) / rect.width - 0.5
     const y = (e.clientY - rect.top) / rect.height - 0.5
-    card.style.transform = `perspective(1000px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`
+    card.style.transform = `perspective(1000px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`
   }
 
   function handleMouseLeave() {
@@ -24,6 +24,7 @@ const ProjectCard = memo(function ProjectCard({ project, index }) {
   return (
     <div
       ref={cardRef}
+      className={styles.cardWrapper}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
