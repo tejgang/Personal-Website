@@ -51,11 +51,9 @@
   width: 100%;
 }
 
-/* Email card wrapper — stacks card + copied message */
+/* Email card wrapper — copied message floats below without affecting grid height */
 .emailCardWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
+  position: relative;
 }
 
 .contactLink {
@@ -65,9 +63,13 @@
 }
 
 .copiedMsg {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 0.7rem;
   color: #0ea5e9;
-  text-align: center;
+  white-space: nowrap;
   pointer-events: none;
 }
 
@@ -88,8 +90,12 @@
   font-size: inherit;
   color: inherit;
   text-align: left;
-  cursor: pointer;
+  cursor: default;
   width: 100%;
+}
+
+button.contactItem {
+  cursor: pointer;
 }
 
 .contactLink:hover .contactItem,
