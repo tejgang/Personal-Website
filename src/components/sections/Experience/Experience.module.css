@@ -78,7 +78,7 @@
 .experienceItem::before {
   content: '';
   position: absolute;
-  left: -1.875rem;
+  left: -2rem;
   top: 1.4rem;
   width: 10px;
   height: 10px;
