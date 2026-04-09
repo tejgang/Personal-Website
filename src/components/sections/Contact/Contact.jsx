@@ -12,20 +12,27 @@ export default function Contact() {
   const [email, setEmail] = useState('')
   const [formOpen, setFormOpen] = useState(false)
   const [status, setStatus] = useState('idle') // idle | sending | sent | error
+  const timerRef = useRef(null)
 
   useEffect(() => {
     const user = String.fromCharCode(116,101,106,103,97,110,103,117,112,97,110,116,117,108,97)
     const domain = String.fromCharCode(103,109,97,105,108)
     const tld = String.fromCharCode(99,111,109)
     setEmail(`${user}@${domain}.${tld}`)
+    return () => clearTimeout(timerRef.current)
   }, [])
+
+  function resetStatusAfterDelay() {
+    clearTimeout(timerRef.current)
+    timerRef.current = setTimeout(() => setStatus('idle'), 3000)
+  }
 
   async function handleSubmit(e) {
     e.preventDefault()
     setStatus('sending')
     const data = new FormData(e.target)
     try {
-      const res = await fetch('https://formspree.io/f/YOUR_FORMSPREE_ID', {
+      const res = await fetch('https://formspree.io/f/mjgpdlzy', {
         method: 'POST',
         body: data,
         headers: { Accept: 'application/json' },
@@ -33,14 +40,14 @@ export default function Contact() {
       if (res.ok) {
         setStatus('sent')
         e.target.reset()
-        setTimeout(() => setStatus('idle'), 3000)
+        resetStatusAfterDelay()
       } else {
         setStatus('error')
-        setTimeout(() => setStatus('idle'), 3000)
+        resetStatusAfterDelay()
       }
     } catch {
       setStatus('error')
-      setTimeout(() => setStatus('idle'), 3000)
+      resetStatusAfterDelay()
     }
   }
 
@@ -123,6 +130,7 @@ export default function Contact() {
             className={styles.toggleBtn}
             onClick={() => setFormOpen(prev => !prev)}
             aria-expanded={formOpen}
+            disabled={status === 'sending'}
           >
             {formOpen ? 'Close ✕' : 'Get in Touch →'}
           </button>
