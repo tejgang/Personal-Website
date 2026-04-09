@@ -29,8 +29,8 @@
   position: absolute;
   bottom: -10px;
   left: 0;
-  width: 80px;
-  height: 4px;
+  width: 40px;
+  height: 2px;
   background: linear-gradient(90deg, #0ea5e9, #0284c7);
   border-radius: 2px;
 }
