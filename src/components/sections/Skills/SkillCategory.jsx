@@ -52,6 +52,7 @@ function SkillBubble({ skill, x, y, delay, inView }) {
 const SkillWeb = memo(function SkillWeb({ category, index: categoryIndex }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
+  const [centerEntryDone, setCenterEntryDone] = useState(false)
 
   return (
     <div ref={ref} className={styles.webWrapper}>
@@ -83,13 +84,21 @@ const SkillWeb = memo(function SkillWeb({ category, index: categoryIndex }) {
         })}
       </svg>
 
-      {/* Center bubble — CSS hover only, no bounce */}
+      {/* Center bubble — bouncy hover */}
       <motion.div
         className={styles.centerBubble}
         style={{ left: CENTER, top: CENTER, x: '-50%', y: '-50%' }}
         initial={{ opacity: 0, scale: 0 }}
-        animate={inView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 0.4, delay: categoryIndex * 0.15 }}
+        animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
+        transition={centerEntryDone
+          ? { type: 'spring', stiffness: 600, damping: 30 }
+          : { duration: 0.4, delay: categoryIndex * 0.15 }
+        }
+        onAnimationComplete={() => { if (inView) setCenterEntryDone(true) }}
+        whileHover={{
+          scale: 1.22,
+          transition: { type: 'spring', stiffness: 500, damping: 9 },
+        }}
       >
         <span className={styles.centerIcon}>{category.icon}</span>
         <span className={styles.centerLabel}>{category.title}</span>
