@@ -80,14 +80,18 @@ const SkillWeb = memo(function SkillWeb({ category, index: categoryIndex }) {
             className={styles.skillBubble}
             style={{ left: x, top: y, x: '-50%', y: '-50%' }}
             initial={{ opacity: 0, scale: 0 }}
-            animate={inView ? { opacity: 1, scale: 1 } : {}}
-            transition={{
-              duration: 0.35,
-              delay: categoryIndex * 0.15 + 0.6 + i * 0.07,
-              type: 'spring',
-              stiffness: 260,
-              damping: 20,
-            }}
+            animate={inView ? {
+              opacity: 1,
+              scale: 1,
+              transition: {
+                duration: 0.35,
+                delay: categoryIndex * 0.15 + 0.6 + i * 0.07,
+                type: 'spring',
+                stiffness: 260,
+                damping: 20,
+              },
+            } : { opacity: 0, scale: 0 }}
+            transition={{ type: 'spring', stiffness: 600, damping: 30 }}
             whileHover={{
               scale: 1.22,
               transition: { type: 'spring', stiffness: 500, damping: 9 },
