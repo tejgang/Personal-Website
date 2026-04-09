@@ -38,7 +38,7 @@
 .contactContent {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 2.5rem;
 }
 
@@ -54,9 +54,13 @@
 .contactRight {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding-top: 0.25rem;
+  align-items: center;
+  justify-content: center;
   min-width: 160px;
+}
+
+.contactRightOpen {
+  justify-content: flex-start;
 }
 
 .contactLink {
@@ -133,7 +137,7 @@
 /* Form */
 .formWrapper {
   margin-top: 1rem;
-  width: 100%;
+  width: 520px;
 }
 
 .form {
@@ -212,6 +216,10 @@
 
   .contactCards {
     min-width: unset;
+    width: 100%;
+  }
+
+  .formWrapper {
     width: 100%;
   }
 }

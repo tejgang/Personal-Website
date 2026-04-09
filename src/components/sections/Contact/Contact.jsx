@@ -126,15 +126,17 @@ export default function Contact() {
           </div>
 
           {/* Button + form column */}
-          <div className={styles.contactRight}>
-            <button
+          <div className={`${styles.contactRight}${formOpen ? ` ${styles.contactRightOpen}` : ''}`}>
+            <motion.button
+              layout
               className={styles.toggleBtn}
               onClick={() => setFormOpen(prev => !prev)}
               aria-expanded={formOpen}
               disabled={status === 'sending'}
+              transition={{ type: 'spring', stiffness: 400, damping: 35 }}
             >
               {formOpen ? 'Close ✕' : 'Get in Touch'}
-            </button>
+            </motion.button>
 
             {/* Expandable form */}
             <AnimatePresence>
