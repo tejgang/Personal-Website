@@ -13,6 +13,19 @@ export default function Contact() {
   const [formOpen, setFormOpen] = useState(false)
   const [status, setStatus] = useState('idle') // idle | sending | sent | error
   const timerRef = useRef(null)
+  const btnWrapperRef = useRef(null)
+  const formWrapperRef = useRef(null)
+
+  useEffect(() => {
+    if (formOpen) {
+      const t = setTimeout(() => {
+        formWrapperRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+      }, 50)
+      return () => clearTimeout(t)
+    } else {
+      btnWrapperRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+    }
+  }, [formOpen])
 
   useEffect(() => {
     const user = String.fromCharCode(116,101,106,103,97,110,103,117,112,97,110,116,117,108,97)
@@ -126,7 +139,7 @@ export default function Contact() {
           </div>
 
           {/* Get in Touch toggle — centered below cards */}
-          <div className={styles.toggleBtnWrapper}>
+          <div ref={btnWrapperRef} className={styles.toggleBtnWrapper}>
             <button
               className={styles.toggleBtn}
               onClick={() => setFormOpen(prev => !prev)}
@@ -141,6 +154,7 @@ export default function Contact() {
           <AnimatePresence>
             {formOpen && (
               <motion.div
+                ref={formWrapperRef}
                 className={styles.formWrapper}
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: 'auto', opacity: 1 }}
