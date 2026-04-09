@@ -83,14 +83,6 @@ export default function About() {
               >
                 View Resume
               </a>
-              <a
-                href="https://github.com/tejgang"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.githubBtn}
-              >
-                GitHub ↗
-              </a>
             </div>
           </motion.div>
 
