@@ -126,14 +126,16 @@ export default function Contact() {
           </div>
 
           {/* Get in Touch toggle — centered below cards */}
-          <button
-            className={styles.toggleBtn}
-            onClick={() => setFormOpen(prev => !prev)}
-            aria-expanded={formOpen}
-            disabled={status === 'sending'}
-          >
-            {formOpen ? 'Close ✕' : 'Get in Touch'}
-          </button>
+          <div className={styles.toggleBtnWrapper}>
+            <button
+              className={styles.toggleBtn}
+              onClick={() => setFormOpen(prev => !prev)}
+              aria-expanded={formOpen}
+              disabled={status === 'sending'}
+            >
+              {formOpen ? 'Close ✕' : 'Get in Touch'}
+            </button>
+          </div>
 
           {/* Expandable form */}
           <AnimatePresence>

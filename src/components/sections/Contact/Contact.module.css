@@ -106,6 +106,13 @@
   color: #888;
 }
 
+/* Toggle button wrapper — guarantees center aligns with card row midpoint */
+.toggleBtnWrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 /* Toggle button — centered below cards */
 .toggleBtn {
   background: none;
