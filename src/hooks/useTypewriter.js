@@ -5,6 +5,13 @@ export function useTypewriter(text, startDelay = 2000, speed = 100) {
   const [done, setDone] = useState(false)
 
   useEffect(() => {
+    // Skip animation for users who prefer reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setDisplayed(text)
+      setDone(true)
+      return
+    }
+
     let interval
     let doneTimer
 

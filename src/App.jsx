@@ -1,4 +1,5 @@
 // src/App.jsx
+import { MotionConfig } from 'framer-motion'
 import GridBackground from './components/GridBackground/GridBackground'
 import Navbar from './components/Navbar/Navbar'
 import About from './components/sections/About/About'
@@ -10,17 +11,19 @@ import Footer from './components/Footer/Footer'
 
 export default function App() {
   return (
-    <>
-      <GridBackground />
-      <Navbar />
-      <main>
-        <About />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Contact />
-      </main>
-      <Footer />
-    </>
+    <MotionConfig reducedMotion="user">
+      <>
+        <GridBackground />
+        <Navbar />
+        <main>
+          <About />
+          <Experience />
+          <Projects />
+          <Skills />
+          <Contact />
+        </main>
+        <Footer />
+      </>
+    </MotionConfig>
   )
 }

@@ -8,6 +8,7 @@ const ProjectCard = memo(function ProjectCard({ project, index }) {
 
   function handleMouseMove(e) {
     const card = cardRef.current
+    card.classList.remove(styles.cardResetting)
     const rect = card.getBoundingClientRect()
     const x = (e.clientX - rect.left) / rect.width - 0.5
     const y = (e.clientY - rect.top) / rect.height - 0.5
@@ -16,6 +17,7 @@ const ProjectCard = memo(function ProjectCard({ project, index }) {
 
   function handleMouseLeave() {
     if (cardRef.current) {
+      cardRef.current.classList.add(styles.cardResetting)
       cardRef.current.style.transform =
         'perspective(1000px) rotateY(0deg) rotateX(0deg)'
     }
@@ -32,6 +34,7 @@ const ProjectCard = memo(function ProjectCard({ project, index }) {
         className={styles.projectCard}
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
+        whileHover={{ y: -5, transition: { duration: 0.2, ease: 'easeOut' } }}
         transition={{
           duration: 0.6,
           delay: index * 0.15,

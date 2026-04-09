@@ -130,6 +130,7 @@ export default function About() {
                     className={`${styles.carouselDot} ${i === photoIdx ? styles.activeDot : ''}`}
                     onClick={() => goTo(i, i > photoIdx ? 'next' : 'prev')}
                     aria-label={photos[i].alt}
+                    aria-current={i === photoIdx ? 'true' : undefined}
                   />
                 ))}
                 <button className={styles.carouselBtn} onClick={nextPhoto} aria-label="Next photo">›</button>
