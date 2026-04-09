@@ -132,7 +132,7 @@ export default function Contact() {
             aria-expanded={formOpen}
             disabled={status === 'sending'}
           >
-            {formOpen ? 'Close ✕' : 'Get in Touch →'}
+            {formOpen ? 'Close ✕' : 'Get in Touch'}
           </button>
 
           {/* Expandable form */}
