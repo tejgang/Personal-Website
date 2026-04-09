@@ -61,7 +61,7 @@
 /* EXPERIENCE CARD */
 .experienceItem {
   position: relative;
-  padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+  padding: 0.75rem 1.25rem 0.75rem 1.5rem;
   margin-bottom: 1rem;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.07);
@@ -111,19 +111,6 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
-.chevron {
-  color: #555;
-  font-size: 1.1rem;
-  transition: transform 0.25s ease, color 0.2s;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.chevronOpen {
-  transform: rotate(180deg);
-  color: #0ea5e9;
-}
-
 .experienceCompany {
   font-size: 0.85rem;
   color: #0ea5e9;
@@ -143,18 +130,6 @@
   color: #444;
 }
 
-.experienceDescription {
-  margin-top: 0.75rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  padding-top: 0.75rem;
-}
-
-.experienceDescription p {
-  font-size: 0.85rem;
-  color: #b0b0b0;
-  line-height: 1.7;
-  margin: 0;
-}
 
 /* IMAGE COLUMN */
 .imageColumn {

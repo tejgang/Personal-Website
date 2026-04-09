@@ -1,5 +1,5 @@
 // src/components/sections/Experience/Experience.jsx
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { motion, useScroll, useInView, useMotionValue, useMotionValueEvent } from 'framer-motion'
 import { useScramble } from '../../../hooks/useScramble'
 import { experiences } from '../../../data/experience'
@@ -11,7 +11,6 @@ export default function Experience() {
   const titleRef = useRef(null)
   const titleInView = useInView(titleRef, { once: true })
   const scrambledTitle = useScramble('Experience', titleInView)
-  const [expandedId, setExpandedId] = useState(null)
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -22,10 +21,6 @@ export default function Experience() {
     const mapped = Math.max(0, Math.min(1, (latest - 0.1) / (0.75 - 0.1)))
     if (mapped > lineScaleY.get()) lineScaleY.set(mapped)
   })
-
-  function handleToggle(id) {
-    setExpandedId(prev => (prev === id ? null : id))
-  }
 
   return (
     <section id="experience" className={styles.section} ref={sectionRef}>
@@ -45,8 +40,6 @@ export default function Experience() {
                 key={exp.id}
                 exp={exp}
                 index={index}
-                isExpanded={expandedId === exp.id}
-                onToggle={() => handleToggle(exp.id)}
               />
             ))}
           </div>
