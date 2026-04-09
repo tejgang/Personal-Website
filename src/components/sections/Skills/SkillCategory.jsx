@@ -52,7 +52,7 @@ const SkillWeb = memo(function SkillWeb({ category, index: categoryIndex }) {
       {/* Center bubble — CSS hover only, no bounce */}
       <motion.div
         className={styles.centerBubble}
-        style={{ left: CENTER, top: CENTER }}
+        style={{ left: CENTER, top: CENTER, x: '-50%', y: '-50%' }}
         initial={{ opacity: 0, scale: 0 }}
         animate={inView ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 0.4, delay: categoryIndex * 0.15 }}
@@ -68,7 +68,7 @@ const SkillWeb = memo(function SkillWeb({ category, index: categoryIndex }) {
           <motion.div
             key={skill.name}
             className={styles.skillBubble}
-            style={{ left: x, top: y }}
+            style={{ left: x, top: y, x: '-50%', y: '-50%' }}
             initial={{ opacity: 0, scale: 0 }}
             animate={inView ? { opacity: 1, scale: 1 } : {}}
             transition={{
