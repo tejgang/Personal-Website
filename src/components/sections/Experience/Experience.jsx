@@ -1,56 +1,57 @@
-import { useRef } from 'react'
-import { motion } from 'framer-motion'
-import { useTimelineDots } from '../../../hooks/useTimelineDots'
+// src/components/sections/Experience/Experience.jsx
+import { useRef, useState } from 'react'
+import { motion, useScroll, useTransform, useInView } from 'framer-motion'
+import { useScramble } from '../../../hooks/useScramble'
 import { experiences } from '../../../data/experience'
 import ExperienceItem from './ExperienceItem'
 import styles from './Experience.module.css'
 
 export default function Experience() {
-  const timelineRef = useRef(null)
-  const itemRefs = useRef([])
+  const sectionRef = useRef(null)
+  const titleRef = useRef(null)
+  const lineRef = useRef(null)
+  const titleInView = useInView(titleRef, { once: true })
+  const scrambledTitle = useScramble('Experience', titleInView)
+  const [expandedId, setExpandedId] = useState(null)
 
-  useTimelineDots(timelineRef, itemRefs)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  })
+  const lineScaleY = useTransform(scrollYProgress, [0.1, 0.75], [0, 1])
+
+  function handleToggle(id) {
+    setExpandedId(prev => (prev === id ? null : id))
+  }
 
   return (
-    <section id="experience" className={styles.section}>
-      <div className={styles.overlay} />
-      <div className={styles.parallaxBg} />
+    <section id="experience" className={styles.section} ref={sectionRef}>
       <div className="container">
-        <motion.h2
-          className={styles.sectionHeader}
-          initial={{ opacity: 0, y: 50, scale: 0.9 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-          viewport={{ once: true, margin: '-50px' }}
-        >
-          Experience
-        </motion.h2>
+        <h2 ref={titleRef} className={styles.sectionHeader}>
+          {scrambledTitle}
+        </h2>
 
         <div className={styles.experienceWrapper}>
-          <div className={styles.experienceTimeline} ref={timelineRef}>
-            {/* Animated timeline line */}
+          <div className={styles.experienceTimeline}>
             <motion.div
               className={styles.timelineLine}
-              initial={{ scaleY: 0 }}
-              whileInView={{ scaleY: 1 }}
-              transition={{ duration: 0.8, ease: 'easeOut' }}
-              viewport={{ once: true, amount: 0.3 }}
-              style={{ transformOrigin: 'top' }}
+              style={{ scaleY: lineScaleY, transformOrigin: 'top' }}
             />
             {experiences.map((exp, index) => (
               <ExperienceItem
                 key={exp.id}
                 exp={exp}
                 index={index}
-                ref={el => (itemRefs.current[index] = el)}
+                isExpanded={expandedId === exp.id}
+                onToggle={() => handleToggle(exp.id)}
               />
             ))}
           </div>
 
           <motion.div
             className={styles.experienceImage}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true, margin: '-50px' }}
           >

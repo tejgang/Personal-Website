@@ -1,175 +1,168 @@
+/* src/components/sections/Experience/Experience.module.css */
 .section {
   padding: 6rem 0;
   position: relative;
-  overflow: hidden;
 }
 
-.overlay {
+.section::before {
+  content: '';
   position: absolute;
-  inset: 0;
-  background: rgba(15, 15, 15, 0.6);
-  z-index: 1;
-}
-
-.parallaxBg {
-  position: absolute;
-  inset: 0;
-  opacity: 0.05;
-  background:
-    radial-gradient(circle at 25% 25%, rgba(102, 126, 234, 0.3) 2px, transparent 2px),
-    radial-gradient(circle at 75% 75%, rgba(118, 75, 162, 0.2) 1px, transparent 1px);
-  background-size: 100px 100px, 150px 150px;
-  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, #667eea, transparent);
 }
 
 .sectionHeader {
-  text-align: center;
   font-size: 2.5rem;
+  font-weight: 800;
+  color: #fff;
   margin-bottom: 3rem;
-  color: #ffffff;
-  position: relative;
-  z-index: 2;
-}
-
-.sectionHeader::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  border-radius: 2px;
+  letter-spacing: -0.5px;
 }
 
 .experienceWrapper {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 2rem;
-  position: relative;
-  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
 }
 
-/* Timeline column */
+/* TIMELINE */
 .experienceTimeline {
-  flex: 1 1 50%;
-  max-width: 50%;
   position: relative;
-  padding-left: 2rem;
+  padding-left: 1.5rem;
 }
 
-/* Animated gradient line (replaces ::before) */
 .timelineLine {
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
-  width: 4px;
-  background: linear-gradient(to bottom, #667eea, #764ba2);
-  border-radius: 2px;
+  width: 2px;
+  background: linear-gradient(180deg, #667eea, #764ba2);
 }
 
+/* EXPERIENCE CARD */
 .experienceItem {
   position: relative;
-  width: 85%;
-  margin-bottom: 2rem;
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  padding: 1.5rem;
-  padding-bottom: 1rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 6px;
+  transition: border-color 0.2s, background 0.2s;
 }
 
 .experienceItem:hover {
-  will-change: transform;
+  border-color: rgba(102, 126, 234, 0.3);
+  background: rgba(102, 126, 234, 0.04);
 }
 
-/* Gradient dot – color set dynamically via --dot-color CSS variable */
+/* Timeline dot */
 .experienceItem::before {
   content: '';
   position: absolute;
-  left: calc(-2rem - 6px);
-  top: 42%;
-  transform: translateX(-5%);
-  width: 16px;
-  height: 16px;
-  background: var(--dot-color, #667eea);
+  left: -1.875rem;
+  top: 1.4rem;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
+  background: #667eea;
+  border: 2px solid #080808;
+}
+
+.itemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.4rem;
 }
 
 .experienceTitle {
-  font-size: 1.3rem;
-  font-weight: bold;
-  color: #ffffff;
-  margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.6rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
 }
 
 .companyLogo {
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
   object-fit: contain;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 4px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.chevron {
+  color: #555;
+  font-size: 1.1rem;
+  transition: transform 0.25s ease, color 0.2s;
   flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+  color: #667eea;
 }
 
 .experienceCompany {
+  font-size: 0.85rem;
   color: #667eea;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
 }
 
-.experienceDate {
-  color: #888;
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-}
-
-.experienceLocation {
-  color: #888;
-  font-size: 0.9rem;
-  margin-bottom: 0.25rem;
-}
-
-/* Side image */
-.experienceImage {
-  flex: 1 1 45%;
-  max-width: 45%;
+.experienceMeta {
   display: flex;
-  justify-content: center;
   align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.metaSep {
+  color: #444;
+}
+
+.experienceDescription {
+  margin-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 0.75rem;
+}
+
+.experienceDescription p {
+  font-size: 0.85rem;
+  color: #b0b0b0;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* SIDE IMAGE */
+.experienceImage {
+  position: sticky;
+  top: 6rem;
 }
 
 .campusImage {
   width: 100%;
-  height: 600px;
-  border-radius: 12px;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   object-fit: cover;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
-/* ── Mobile ── */
-@media (max-width: 768px) {
+/* Responsive */
+@media (max-width: 900px) {
   .experienceWrapper {
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
-  .experienceTimeline,
-  .experienceImage {
-    flex: 1 1 100%;
-    max-width: 100%;
-  }
+
   .experienceImage {
     display: none;
-  }
-  .experienceItem {
-    width: 100%;
   }
 }
