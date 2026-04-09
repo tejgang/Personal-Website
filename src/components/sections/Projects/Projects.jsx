@@ -6,7 +6,6 @@ import styles from './Projects.module.css'
 export default function Projects() {
   return (
     <section id="projects" className={styles.section}>
-      <div className={styles.overlay} />
       <div className="container">
         <motion.h2
           className={styles.sectionHeader}

@@ -65,12 +65,6 @@ const ProjectCard = memo(function ProjectCard({ project, index }) {
         </div>
       </div>
 
-      {/* Tech strip — revealed on hover */}
-      <div className={styles.techStrip}>
-        {project.tags.map(tag => (
-          <span key={tag} className={styles.techTag}>{tag}</span>
-        ))}
-      </div>
     </motion.div>
   )
 })
