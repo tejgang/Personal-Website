@@ -94,7 +94,8 @@
   width: 100%;
 }
 
-button.contactItem {
+button.contactItem,
+.contactLink .contactItem {
   cursor: pointer;
 }
 
