@@ -39,13 +39,14 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 /* TIMELINE */
 .experienceTimeline {
   position: relative;
   padding-left: 1.5rem;
+  align-self: start;
 }
 
 .timelineLine {
@@ -159,7 +160,7 @@
 .experienceImage {
   position: sticky;
   top: 6rem;
-  align-self: start;
+  height: fit-content;
   display: flex;
   align-items: center;
   justify-content: center;
