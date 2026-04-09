@@ -1,25 +1,25 @@
-import { motion } from 'framer-motion'
+// src/components/sections/Skills/Skills.jsx
+import { useRef } from 'react'
+import { useInView } from 'framer-motion'
+import { useScramble } from '../../../hooks/useScramble'
 import { skillCategories } from '../../../data/skills'
-import SkillCategory from './SkillCategory'
+import SkillWeb from './SkillCategory'
 import styles from './Skills.module.css'
 
 export default function Skills() {
+  const titleRef = useRef(null)
+  const titleInView = useInView(titleRef, { once: true })
+  const scrambledTitle = useScramble('Technical Skills', titleInView)
+
   return (
     <section id="skills" className={styles.section}>
-      <div className={styles.overlay} />
       <div className="container">
-        <motion.h2
-          className={styles.sectionHeader}
-          initial={{ opacity: 0, y: 50, scale: 0.9 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-          viewport={{ once: true, margin: '-50px' }}
-        >
-          Technical Skills
-        </motion.h2>
+        <h2 ref={titleRef} className={styles.sectionHeader}>
+          {scrambledTitle}
+        </h2>
         <div className={styles.skillsGrid}>
           {skillCategories.map((category, index) => (
-            <SkillCategory key={category.id} category={category} index={index} />
+            <SkillWeb key={category.id} category={category} index={index} />
           ))}
         </div>
       </div>

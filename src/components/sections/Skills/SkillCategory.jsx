@@ -1,32 +1,92 @@
-import { memo } from 'react'
-import { motion } from 'framer-motion'
+// src/components/sections/Skills/SkillCategory.jsx
+import { memo, useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 import styles from './Skills.module.css'
 
-const SkillCategory = memo(function SkillCategory({ category, index }) {
+const SIZE = 300        // container px
+const CENTER = SIZE / 2
+const RADIUS = 108      // distance from center to skill bubbles
+
+function getPosition(index, total) {
+  const angle = (2 * Math.PI / total) * index - Math.PI / 2
+  return {
+    x: CENTER + Math.cos(angle) * RADIUS,
+    y: CENTER + Math.sin(angle) * RADIUS,
+  }
+}
+
+const SkillWeb = memo(function SkillWeb({ category, index: categoryIndex }) {
+  const ref = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-60px' })
+
   return (
-    <motion.div
-      className={styles.skillCategory}
-      initial={{ opacity: 0, scale: 0.9, y: 30 }}
-      whileInView={{ opacity: 1, scale: 1, y: 0 }}
-      transition={{
-        duration: 0.6,
-        delay: index * 0.1,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      }}
-      viewport={{ once: true, margin: '-50px' }}
-    >
-      <div className={styles.skillIcon}>{category.icon}</div>
-      <h3>{category.title}</h3>
-      <div className={styles.skillBubbles}>
-        {category.skills.map(skill => (
-          <div key={skill.name} className={styles.skillBubble}>
-            <img src={skill.img} alt={skill.name} loading="lazy" />
-            <span>{skill.name}</span>
-          </div>
-        ))}
-      </div>
-    </motion.div>
+    <div ref={ref} className={styles.webWrapper}>
+      {/* SVG lines layer */}
+      <svg
+        className={styles.webSvg}
+        viewBox={`0 0 ${SIZE} ${SIZE}`}
+        width={SIZE}
+        height={SIZE}
+        aria-hidden="true"
+      >
+        {category.skills.map((skill, i) => {
+          const { x, y } = getPosition(i, category.skills.length)
+          return (
+            <motion.path
+              key={skill.name}
+              d={`M ${CENTER} ${CENTER} L ${x} ${y}`}
+              stroke="rgba(102, 126, 234, 0.25)"
+              strokeWidth="1"
+              fill="none"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={inView ? { pathLength: 1, opacity: 1 } : {}}
+              transition={{
+                pathLength: { duration: 0.5, delay: categoryIndex * 0.15 + 0.3 + i * 0.06 },
+                opacity: { duration: 0.2, delay: categoryIndex * 0.15 + 0.3 + i * 0.06 },
+              }}
+            />
+          )
+        })}
+      </svg>
+
+      {/* Center bubble */}
+      <motion.div
+        className={styles.centerBubble}
+        style={{ left: CENTER, top: CENTER }}
+        initial={{ opacity: 0, scale: 0 }}
+        animate={inView ? { opacity: 1, scale: 1 } : {}}
+        transition={{ duration: 0.4, delay: categoryIndex * 0.15 }}
+      >
+        <span className={styles.centerIcon}>{category.icon}</span>
+        <span className={styles.centerLabel}>{category.title}</span>
+      </motion.div>
+
+      {/* Skill bubbles */}
+      {category.skills.map((skill, i) => {
+        const { x, y } = getPosition(i, category.skills.length)
+        return (
+          <motion.div
+            key={skill.name}
+            className={styles.skillBubble}
+            style={{ left: x, top: y }}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{
+              duration: 0.35,
+              delay: categoryIndex * 0.15 + 0.6 + i * 0.07,
+              type: 'spring',
+              stiffness: 260,
+              damping: 20,
+            }}
+            whileHover={{ scale: 1.18 }}
+          >
+            <img src={skill.img} alt={skill.name} loading="lazy" className={styles.skillIcon} />
+            <span className={styles.skillLabel}>{skill.name}</span>
+          </motion.div>
+        )
+      })}
+    </div>
   )
 })
 
-export default SkillCategory
+export default SkillWeb
