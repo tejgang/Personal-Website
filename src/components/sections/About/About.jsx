@@ -36,16 +36,9 @@ export default function About() {
             <p className={styles.label}>Hi, I'm</p>
 
             <h1 className={styles.name}>
-              {nameDone ? (
-                <>
-                  <span className={styles.nameSolid}>Tej</span>
-                  <span className={styles.nameGhost}>Gangupantula</span>
-                </>
-              ) : (
-                <span className={styles.nameSolid}>
-                  {nameDisplayed}<span className={styles.cursor}>|</span>
-                </span>
-              )}
+              <span className={styles.nameSolid}>
+                {nameDisplayed}{!nameDone && <span className={styles.cursor}>|</span>}
+              </span>
             </h1>
 
             <div className={styles.divider} />
