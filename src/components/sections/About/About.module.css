@@ -89,6 +89,7 @@
 .name {
   margin: 0 0 1rem;
   line-height: 1.05;
+  min-height: calc(clamp(2.5rem, 5vw, 4rem) * 1.05);
 }
 
 .nameSolid {
