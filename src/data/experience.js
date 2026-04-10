@@ -8,6 +8,7 @@ export const experiences = [
     logo: '/images/agentman_logo.jpg',
     date: 'Jun 2025 - Present',
     location: 'Berkeley, CA',
+    description: 'I built agentic AI systems for healthcare operations utilizing HIPAA-compliant APIs and GCP, and I am currently developing MCP servers in TS/JS with Docker and GCP to optimize agentic performance and scalability.',
   },
   {
     id: 2,
@@ -17,6 +18,7 @@ export const experiences = [
     logo: '/images/fusioncare.jpeg',
     date: 'Jul 2024 - Sep 2024',
     location: 'Davis, CA',
+    description: 'I built clinical NLP pipelines and predictive models in Python to automate healthcare workflows. I also delivered data-driven insights to clinicians through structured model outputs and evaluation reports.',
   },
   {
     id: 3,
@@ -26,14 +28,16 @@ export const experiences = [
     logo: '/images/ucsb.png',
     date: 'Feb 2024 - Jan 2026',
     location: 'Santa Barbara, CA',
+    description: 'I collaborated with the event staff to deliver high-quality food service to guests at various on-campus events, including athletic events, tournaments and concerts.',
   },
   {
     id: 4,
     role: 'Web Development Intern',
     company: 'Modesto City Schools District',
-    url: null,
+    url: 'https://cte.mcs4kids.com/o/cte/',
     logo: '/images/modesto.png',
     date: 'Nov 2022 - May 2023',
     location: 'Modesto, CA',
+    description: 'I worked with a team to develop an interactive website for 8th graders to explore career pathways, boosting student engagement through a more dynamic learning experience.',
   },
 ]

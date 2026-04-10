@@ -61,23 +61,76 @@
 /* EXPERIENCE CARD */
 .experienceItem {
   position: relative;
-  padding: 0.75rem 1.25rem 0.75rem 1.5rem;
   margin-bottom: 1rem;
+  cursor: pointer;
+  perspective: 900px;
+}
+
+/* 3D flip container */
+.cardFlipper {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.flipped {
+  transform: rotateX(180deg);
+}
+
+/* Each face is a complete card — border + background rotate with it */
+.cardFront,
+.cardBack {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  padding: 0.75rem 1.25rem 0.75rem 1.5rem;
+  border-radius: 6px;
+}
+
+.cardFront {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 6px;
   transition: border-color 0.2s, background 0.2s;
 }
 
-.experienceItem:hover {
+.experienceItem:hover .cardFront {
   border-color: rgba(14, 165, 233, 0.3);
   background: rgba(14, 165, 233, 0.04);
+}
+
+.cardBack {
+  position: absolute;
+  inset: 0;
+  transform: rotateX(180deg);
+  background: #161616;
+  border: 1px solid rgba(14, 165, 233, 0.25);
+  display: flex;
+  align-items: center;
+}
+
+.backDescription {
+  font-size: 0.82rem;
+  color: #c0c0c0;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.flipHint {
+  font-size: 0.8rem;
+  color: #444;
+  flex-shrink: 0;
+  margin-left: auto;
+  padding-left: 0.5rem;
+  transition: color 0.2s;
+}
+
+.experienceItem:hover .flipHint {
+  color: #0ea5e9;
 }
 
 /* Timeline dot — rendered as motion.div so it can animate after the card */
 .timelineDot {
   position: absolute;
-  left: calc(-1.5rem - 1px); /* aligns with line center; x:'-50%' in JSX finishes centering */
+  left: -1.5rem; /* aligns with line center; x:'-50%' in JSX finishes centering */
   top: 1.4rem;
   width: 12px;
   height: 12px;
