@@ -42,9 +42,8 @@ export default function About() {
           <motion.div
             className={styles.aboutText}
             initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-            viewport={{ once: true, margin: '-50px' }}
           >
             <p className={styles.label}>Hi, I'm</p>
 
@@ -93,9 +92,8 @@ export default function About() {
           <motion.div
             className={styles.imageColumn}
             initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
-            viewport={{ once: true, margin: '-50px' }}
           >
             <div className={styles.carouselOuter}>
               <div className={styles.photoWrapper}>
