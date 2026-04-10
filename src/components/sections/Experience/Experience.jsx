@@ -46,7 +46,7 @@ export default function Experience() {
           >
             <div className={styles.photoWrapper}>
               <img
-                src="/images/aerial-view-ocean-front.jpg"
+                src="/images/aerial-view-ocean-front.webp"
                 alt="Aerial ocean view"
                 className={styles.campusImage}
                 loading="lazy"
