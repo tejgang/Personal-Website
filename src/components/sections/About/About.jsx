@@ -19,9 +19,9 @@ export default function About() {
     return () => clearTimeout(animTimerRef.current)
   }, [])
   const photos = [
-    { src: '/images/IMG_8674.png', alt: 'Tej Gangupantula' },
-    { src: '/images/cat-gray.jpg', alt: 'Billu' },
-    { src: '/images/cat-tabby.jpg', alt: 'Sheru' },
+    { src: '/images/tej.webp', alt: 'Tej Gangupantula' },
+    { src: '/images/cat-gray.webp', alt: 'Billu' },
+    { src: '/images/cat-tabby.webp', alt: 'Sheru' },
   ]
   function goTo(newIdx, dir) {
     clearTimeout(animTimerRef.current)
