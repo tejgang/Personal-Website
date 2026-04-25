@@ -21,7 +21,7 @@ export const skillCategories = [
       { name: 'TensorFlow', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg' },
       { name: 'Scikit-Learn', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg' },
       { name: 'OpenAI', img: 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg' },
-      { name: 'Langchain', img: '/images/langchain-icon-logo-png_seeklogo-611655.png' },
+      { name: 'LangChain', img: '/images/langchain-icon-logo-png_seeklogo-611655.png' },
       { name: 'SpaCy', img: '/images/SpaCy_logo.svg.png' },
     ],
   },
