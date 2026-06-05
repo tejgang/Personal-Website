@@ -9,7 +9,6 @@ export const skillCategories = [
       { name: 'SQL', img: '/images/icons8-sql-48.png' },
       { name: 'Java', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
       { name: 'JavaScript', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-      { name: 'HTML', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
       { name: 'TypeScript', img: '/images/Typescript_logo_2020.svg.png' },
     ],
   },
@@ -20,7 +19,7 @@ export const skillCategories = [
     skills: [
       { name: 'TensorFlow', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg' },
       { name: 'Scikit-Learn', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg' },
-      { name: 'OpenAI', img: 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg' },
+      { name: 'LangGraph', img: '/images/langgraph-color.png' },
       { name: 'LangChain', img: '/images/langchain-icon-logo-png_seeklogo-611655.png' },
       { name: 'SpaCy', img: '/images/SpaCy_logo.svg.png' },
     ],
@@ -43,8 +42,8 @@ export const skillCategories = [
     title: 'Tools & Frameworks',
     skills: [
       { name: 'Git', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
-      { name: 'Tableau', img: 'https://cdn.worldvectorlogo.com/logos/tableau-software.svg' },
-      { name: 'Django', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg' },
+      { name: 'FastAPI', img: '/images/fastapi-icon-sv7hsd0o3donlq26es2lr.png' },
+      { name: 'PostgreSQL', img: '/images/Postgresql_elephant.png' },
       { name: 'Jupyter', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg' },
       { name: 'GCP', img: '/images/gcplogo.png' },
       { name: 'Docker', img: '/images/docker-icon.webp' },
