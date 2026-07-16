@@ -5,7 +5,7 @@ export const projects = [
     emoji: '📞',
     image: '/images/Good-Clinical-Practice-GCP.png',
     description:
-      'Built a real-time voice agent (speech-to-text → LangGraph state machine → text-to-speech) that answers prior-authorization status questions over a browser interface, routing callers across four normalized outcomes via LangGraph\'s conditional edges. Integrated the ElevenLabs API for real-time speech recognition and synthesis, and designed three consent-gated tools backed by a PostgresSaver checkpointer for durable per-call state that survives process restarts.',
+      'Built a real-time voice agent (speech-to-text → LangGraph state machine → text-to-speech) that answers prior-authorization status questions over a browser interface via the ElevenLabs API. Designed three consent-gated tools backed by a PostgresSaver checkpointer for durable per-call state that survives process restarts.',
     links: [
       { label: 'GitHub', href: 'https://github.com/tejgang/VoiceAgent' },
     ],

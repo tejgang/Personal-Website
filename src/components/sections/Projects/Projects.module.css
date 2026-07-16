@@ -87,6 +87,7 @@
 
 .cardWrapper {
   /* no transition during tracking — smooth reset only */
+  height: 100%;
 }
 
 .cardResetting {
@@ -103,7 +104,7 @@
   transition: box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
-  min-height: 48rem;
+  height: 100%;
 }
 
 .projectCard:hover {
