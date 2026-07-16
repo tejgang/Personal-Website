@@ -1,14 +1,13 @@
 export const projects = [
   {
     id: 1,
-    title: 'Brain Tumor Classification',
-    emoji: '🧠',
-    image: '/images/brain-mri.webp',
+    title: 'Prior Authorization Voice Agent',
+    emoji: '📞',
+    image: '/images/Good-Clinical-Practice-GCP.png',
     description:
-      'Developed a Convolutional Neural Network model using TensorFlow and Keras to classify brain tumors (glioma, meningioma, pituitary tumor, no tumor) with 95% accuracy on test data, leveraging a dataset of 7,000+ MRI scans. Implemented advanced data preprocessing and augmentation techniques to improve model performance and ensure robust predictions.',
+      'Built a real-time voice agent (speech-to-text → LangGraph state machine → text-to-speech) that answers prior-authorization status questions over a browser interface, routing callers across four normalized outcomes via LangGraph\'s conditional edges. Integrated the ElevenLabs API for real-time speech recognition and synthesis, and designed three consent-gated tools backed by a PostgresSaver checkpointer for durable per-call state that survives process restarts.',
     links: [
-      { label: 'View Project', href: '/documents/BrainTumorCNN.pdf' },
-      { label: 'GitHub', href: 'https://github.com/tejgang/BrainTumorCNN' },
+      { label: 'GitHub', href: 'https://github.com/tejgang/VoiceAgent' },
     ],
   },
   {
@@ -21,6 +20,18 @@ export const projects = [
     links: [
       { label: 'View Project', href: '/documents/NBA_Finals_Prediction_fv.pdf' },
       { label: 'GitHub', href: 'https://github.com/tejgang/NBA2025ML' },
+    ],
+  },
+  {
+    id: 3,
+    title: 'Brain Tumor Classification',
+    emoji: '🧠',
+    image: '/images/brain-mri.webp',
+    description:
+      'Developed a Convolutional Neural Network model using TensorFlow and Keras to classify brain tumors (glioma, meningioma, pituitary tumor, no tumor) with 95% accuracy on test data, leveraging a dataset of 7,000+ MRI scans. Implemented advanced data preprocessing and augmentation techniques to improve model performance and ensure robust predictions.',
+    links: [
+      { label: 'View Project', href: '/documents/BrainTumorCNN.pdf' },
+      { label: 'GitHub', href: 'https://github.com/tejgang/BrainTumorCNN' },
     ],
   },
 ]
