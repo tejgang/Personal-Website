@@ -101,6 +101,9 @@
   position: relative;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  min-height: 48rem;
 }
 
 .projectCard:hover {
@@ -141,6 +144,9 @@
 
 .projectContent {
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .projectTitle {
@@ -154,6 +160,7 @@
   color: #b0b0b0;
   margin-bottom: 1.5rem;
   line-height: 1.6;
+  flex: 1;
 }
 
 .projectLinks {
