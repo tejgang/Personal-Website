@@ -61,15 +61,16 @@ export default function About() {
             <div className={styles.aboutDescription}>
               <p>
                 Hello! I'm Tej, and I am currently pursuing my B.S. in Statistics and Data Science
-                at UC Santa Barbara. I am particularly interested in machine learning, data science,
-                and artificial intelligence.
+                at UC Santa Barbara. I am particularly interested in agentic AI, machine learning,
+                and data science.
               </p>
               <p>
                 My path into AI started with curiosity about how data reveals patterns and drives
-                decisions. I'm currently an AI Engineer intern at Agentman, building healthcare
-                automation systems using agentic AI, GCP, and LLM-powered tools. I've also built
-                clinical NLP pipelines and predictive models that automated workflows and gave
-                clinicians data-driven insights.
+                decisions. I’m currently an AI Engineer Intern at Agentman, where I architect
+                production MCP servers in TypeScript/Node and build LangGraph-based agentic
+                workflows that automate healthcare operations on GCP. I’ve also built clinical NLP
+                pipelines and predictive models at FusionCare that automated workflows and delivered
+                data-driven insights to clinicians.
               </p>
               <p>
                 When I'm not building or learning, I enjoy cooking for myself and others, traveling,

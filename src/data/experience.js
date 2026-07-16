@@ -7,8 +7,8 @@ export const experiences = [
     url: 'https://agentman.ai/',
     logo: '/images/agentman_logo.jpg',
     date: 'Jun 2025 - Present',
-    location: 'Berkeley, CA',
-    description: 'I built agentic AI systems for healthcare operations utilizing HIPAA-compliant APIs and GCP, and I am currently developing MCP servers in TS/JS with Docker and GCP to optimize agentic performance and scalability.',
+    location: 'San Francisco, CA',
+    description: 'I architected production MCP servers in TypeScript/Node exposing 30+ tools for LLM agents, and built LangGraph-orchestrated agentic workflows that automate HIPAA-compliant healthcare operations on GCP, wiring in EHR data sources and third-party APIs.',
   },
   {
     id: 2,
