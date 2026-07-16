@@ -38,6 +38,7 @@
 
 .carouselViewport {
   position: relative;
+  padding: 0 4.5rem;
 }
 
 .projectsGrid {
@@ -77,11 +78,11 @@
 }
 
 .arrowRight {
-  right: 0.5rem;
+  right: 0;
 }
 
 .arrowLeft {
-  left: 0.5rem;
+  left: 0;
 }
 
 .cardWrapper {
@@ -177,6 +178,16 @@
 
 /* ── Mobile ── */
 @media (max-width: 768px) {
+  .carouselViewport {
+    padding: 0 3rem;
+  }
+
+  .arrowBubble {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+
   .projectsGrid {
     grid-template-columns: 1fr;
   }
